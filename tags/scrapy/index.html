@@ -6,19 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>浅谈POST方法与GET方法的区别 | Epiphany</title>
+  <title>Tag: scrapy | Epiphany</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在HTTP协议下，client与server进行交互有四种基本方法，分别为GET、POST、PUT、DELETE，分别对应为对网站资源的查、改、增、删操作。  GET用于信息的获取，而且它应该是安全和幂等的，所谓安全是针对于server而言的，意即只可查看而无法修改信息；幂等则指对于同一个URL的多个请求应当返回同样的结果。  POST表示可能对server上的资源进行修改的请求，例如，读者对">
-<meta name="keywords" content="技术,HTTP协议">
-<meta property="og:type" content="article">
-<meta property="og:title" content="浅谈POST方法与GET方法的区别">
-<meta property="og:url" content="http://yoursite.com/2017/05/26/浅谈POST方法与GET方法的区别/index.html">
+  <meta name="description" content="subtitle222">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Epiphany">
+<meta property="og:url" content="http://yoursite.com/tags/scrapy/index.html">
 <meta property="og:site_name" content="Epiphany">
-<meta property="og:description" content="在HTTP协议下，client与server进行交互有四种基本方法，分别为GET、POST、PUT、DELETE，分别对应为对网站资源的查、改、增、删操作。  GET用于信息的获取，而且它应该是安全和幂等的，所谓安全是针对于server而言的，意即只可查看而无法修改信息；幂等则指对于同一个URL的多个请求应当返回同样的结果。  POST表示可能对server上的资源进行修改的请求，例如，读者对">
-<meta property="og:updated_time" content="2017-05-27T15:36:39.887Z">
+<meta property="og:description" content="subtitle222">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈POST方法与GET方法的区别">
-<meta name="twitter:description" content="在HTTP协议下，client与server进行交互有四种基本方法，分别为GET、POST、PUT、DELETE，分别对应为对网站资源的查、改、增、删操作。  GET用于信息的获取，而且它应该是安全和幂等的，所谓安全是针对于server而言的，意即只可查看而无法修改信息；幂等则指对于同一个URL的多个请求应当返回同样的结果。  POST表示可能对server上的资源进行修改的请求，例如，读者对">
+<meta name="twitter:title" content="Epiphany">
+<meta name="twitter:description" content="subtitle222">
   
     <link rel="alternative" href="/atom.xml" title="Epiphany" type="application/atom+xml">
   
@@ -152,171 +150,68 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-浅谈POST方法与GET方法的区别" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      浅谈POST方法与GET方法的区别
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/05/27/scrapy知识点梳理（总结向）/" class="archive-article-date">
+  	<time datetime="2017-05-27T14:16:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-27</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/05/27/scrapy知识点梳理（总结向）/">Scrapy知识点梳理（总结向）</a>
     </h1>
   
 
-        
-        <a href="/2017/05/26/浅谈POST方法与GET方法的区别/" class="archive-article-date">
-  	<time datetime="2017-05-26T12:14:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  在HTTP协议下，client与server进行交互有四种基本方法，分别为GET、POST、PUT、DELETE，分别对应为对网站资源的查、改、增、删操作。<br>  GET用于信息的获取，而且它应该是安全和幂等的，所谓安全是针对于server而言的，意即只可查看而无法修改信息；幂等则指对于同一个URL的多个请求应当返回同样的结果。<br>  POST表示可能对server上的资源进行修改的请求，例如，读者对新闻发表自己的评论，则将通过POST实现，因为在评论提交之后站点的资源已经不同了。事实上，对资源的增、删、改、查等操作，均可以通过GET/POST方法来实现，无需用到PUT和DELETE。</p>
-<a id="more"></a>
-<p>  再从表面现象上看GET与POST的区别：<br>  1.GET请求的数据会附在url之后（也即把数据放置在HTTP协议头中），以？分割URL和传输数据，参数之间以&amp;相连，如<a href="https://www.douban.com/search?source=suggest&amp;q=宫崎葵，如果数据是英文字母/数字，原样发送，如果是空格，转换为+，如果是中文/其他字符，则直接把字符串用BASE64加密，得出如：%E5%AE%AB%E5%B4%8E%E8%91%B5，其中%XX表示为该符号以16进制表示的UTF-8编码。（貌似也可以使用cookie传参，而POST则将数据存放在BODY中。）" target="_blank" rel="external">https://www.douban.com/search?source=suggest&amp;q=宫崎葵，如果数据是英文字母/数字，原样发送，如果是空格，转换为+，如果是中文/其他字符，则直接把字符串用BASE64加密，得出如：%E5%AE%AB%E5%B4%8E%E8%91%B5，其中%XX表示为该符号以16进制表示的UTF-8编码。（貌似也可以使用cookie传参，而POST则将数据存放在BODY中。）</a><br>  2.GET方式提交的数据最多只能是1024字节，理论上POST没有限制，可以传较大量的数据（误：因为GET是通过url提交数据，那么GET可以提交的数据量就跟URL的长度有直接关系，但事实上，URL不存在参数上限的问题，HTTP协议也未对URL长度进行限制。这个限制是特定的浏览器以及服务器对它的限制）<br>  3.在ASP中，服务端获取GET请求参数用Request.QueryString，获取POST请求参数用Request.Form。在JSP中，用request.getParameter(\”XXXX\”)来获取，虽然jsp中也有request.getQueryString()方法，但使用起来比较麻烦，比如：传一个test.jsp?name=hyddd&amp;password=hyddd，用request.getQueryString()得到的是：name=hyddd&amp;password=hyddd。在PHP中，可以用$_GET和$_POST分别获取GET和POST中的数据，而$_REQUEST则可以获取GET和POST两种请求中的数据。<br>  4.POST的安全性要比GET的安全性高。注意：这里的「安全」和上面提到的「安全」不是同一个概念。这里的安全是真正的security的含义。比如，通过GET提交数据，那么用户名和密码都会出现在URL上，因为（1）登录页面有可能被浏览器缓存，（2）别人可能会查看浏览器的历史记录从而获取你的账号密码。</p>
-<p>  至此先总结一下，Get是向服务器发索取数据的一种请求，而Post是向服务器提交数据的一种请求，在FORM（表单）中，Method默认为”GET”，实质上，GET和POST只是发送机制不同，并不是一个取一个发！</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/wx.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">HTTP协议</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/26/浅谈POST方法与GET方法的区别/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/05/27/scrapy知识点梳理（总结向）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Scrapy知识点梳理（总结向）
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/05/20/我的第一篇文章/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一篇文章</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -339,9 +234,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

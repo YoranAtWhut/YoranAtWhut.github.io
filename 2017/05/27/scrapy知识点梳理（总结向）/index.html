@@ -9,13 +9,13 @@
   <title>Scrapy知识点梳理（总结向） | Epiphany</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。   本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：   Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、">
-<meta name="keywords" content="-scrapy -爬虫">
+<meta name="keywords" content="scrapy,爬虫,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scrapy知识点梳理（总结向）">
 <meta property="og:url" content="http://yoursite.com/2017/05/27/scrapy知识点梳理（总结向）/index.html">
 <meta property="og:site_name" content="Epiphany">
 <meta property="og:description" content="本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。   本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：   Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、">
-<meta property="og:updated_time" content="2017-05-27T15:14:19.719Z">
+<meta property="og:updated_time" content="2017-05-27T15:36:52.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scrapy知识点梳理（总结向）">
 <meta name="twitter:description" content="本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。   本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：   Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、">
@@ -174,13 +174,15 @@
       
         <pre><code>本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。
 </code></pre><p>  本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：</p>
-<p>  Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br>  Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求进行修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持[1]。</p>
+<p>  Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br>  Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求进行修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持[1]。<br><a id="more"></a></p>
 <p>  整个Scrapy框架为5+2结构，分别对应为spider、engine、scheduler、downloader、pipeline以及spider middleware和downloader middleware，各个模块的功能职责分别为：<br>  1.spider：作为整个工程的起点，主要工作是产生要爬取的网页的链接以及处理从downloader返回的response。通过指令scrapy genspider spidername生成。具体实现需要用户进行自定义。<br>  2.engine：负责调度的模块，一般不需修改。Spider的请求即通过此模块通往scheduler模块。<br>  3.scheduler：顾名思义，用以调度spider的爬取请求，在此产生的请求是真实的请求，通过engine模块传给downloader。<br>  4.downloader：此模块会对网页进行爬取，一般不做改动。<br>  5.pipeline：处理从spider处获得的item项，用以对数据进行去重、或入库等，需要用户自定义。 </p>
 <h2 id=""><a href="#" class="headerlink" title="　"></a>　</h2><p>·  可以在scrapy中引入日志，举例如下：<br>   import logging<br>   logger = logging.getLogger(‘mycostomlogger’)<br>   class MySpider(Scrapy.spider):<br>　　　…<br>　　　def parse(self,response):<br>　　　Logger.info(‘content’,response.url)</p>
 <p>　　此时在settings.py中配置logger<br>　　<br>·  可以使用scrapy内置的发送邮件模块：<br>　　from scrapy.mail import Mailsender<br>　　mailer = MailSender()//smtphost、mailfrom、smtpuser、smtppass、smtpport<br>　　mailer.send(to=[],subject,body,cc,attaches)<br>　　我感觉这个模块可以用来监测某个网页的信息，一旦发生变化可以立即通知相关单位。。。</p>
 <p>·  可以使用代理ip来对网页进行爬取：<br>　　一个叫“西刺”的网站提供免费代理ip，可以使用这种手段来应对server对爬虫的封锁。
 　　</p>
 <p>·  在多级页面爬取时，在parse函数中，可以使用如下代码来进行item的传递：<br>　　yield scrapy.Request(url=…,meta={‘item’:item},callback=self.parse_detail)<br>　　在parse_detail中：<br>　　Item = response.meta[‘item’]<br>　　并且，如果要求是存成excel，可以先存csv，再另存为。
+　　</p>
+<p>　　　[1] 百度百科
 　　</p>
 <p>　　
 　　</p>
@@ -223,7 +225,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-scrapy -爬虫</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -292,6 +302,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/05/27/额。。。关于为什么开这个个人站/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          额。。。关于为什么开这个个人站
+        
+      </div>
+    </a>
   
   
     <a href="/2017/05/26/浅谈POST方法与GET方法的区别/" id="article-nav-older" class="article-nav-link-wrap">
@@ -399,11 +418,31 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">-scrapy -爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color1">-scrapy -爬虫 -技术</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">-HTTP协议</a>
+                <a href="javascript:void(0)" class="js-tag color2">-HTTP协议 -技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">-杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">HTTP协议</a>
               </li>
             
             <div class="clearfix"></div>
