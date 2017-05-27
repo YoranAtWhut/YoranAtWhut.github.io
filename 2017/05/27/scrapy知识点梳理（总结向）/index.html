@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Epiphany</title>
+  <title>Scrapy知识点梳理（总结向） | Epiphany</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="subtitle222">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Epiphany">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。   本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：   Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、">
+<meta name="keywords" content="-scrapy -爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scrapy知识点梳理（总结向）">
+<meta property="og:url" content="http://yoursite.com/2017/05/27/scrapy知识点梳理（总结向）/index.html">
 <meta property="og:site_name" content="Epiphany">
-<meta property="og:description" content="subtitle222">
+<meta property="og:description" content="本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。   本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：   Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、">
+<meta property="og:updated_time" content="2017-05-27T15:14:19.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Epiphany">
-<meta name="twitter:description" content="subtitle222">
+<meta name="twitter:title" content="Scrapy知识点梳理（总结向）">
+<meta name="twitter:description" content="本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。   本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：   Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、">
   
     <link rel="alternative" href="/atom.xml" title="Epiphany" type="application/atom+xml">
   
@@ -150,36 +152,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-scrapy知识点梳理（总结向）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/27/scrapy知识点梳理（总结向）/" class="archive-article-date">
-  	<time datetime="2017-05-27T14:16:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/27/scrapy知识点梳理（总结向）/">Scrapy知识点梳理（总结向）</a>
+    <h1 class="article-title" itemprop="name">
+      Scrapy知识点梳理（总结向）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/27/scrapy知识点梳理（总结向）/" class="archive-article-date">
+  	<time datetime="2017-05-27T14:16:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。
+</code></pre><p>  本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：</p>
+<p>  Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br>  Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求进行修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持[1]。</p>
+<p>  整个Scrapy框架为5+2结构，分别对应为spider、engine、scheduler、downloader、pipeline以及spider middleware和downloader middleware，各个模块的功能职责分别为：<br>  1.spider：作为整个工程的起点，主要工作是产生要爬取的网页的链接以及处理从downloader返回的response。通过指令scrapy genspider spidername生成。具体实现需要用户进行自定义。<br>  2.engine：负责调度的模块，一般不需修改。Spider的请求即通过此模块通往scheduler模块。<br>  3.scheduler：顾名思义，用以调度spider的爬取请求，在此产生的请求是真实的请求，通过engine模块传给downloader。<br>  4.downloader：此模块会对网页进行爬取，一般不做改动。<br>  5.pipeline：处理从spider处获得的item项，用以对数据进行去重、或入库等，需要用户自定义。 </p>
+<h2 id=""><a href="#" class="headerlink" title="　"></a>　</h2><p>·  可以在scrapy中引入日志，举例如下：<br>   import logging<br>   logger = logging.getLogger(‘mycostomlogger’)<br>   class MySpider(Scrapy.spider):<br>　　　…<br>　　　def parse(self,response):<br>　　　Logger.info(‘content’,response.url)</p>
+<p>　　此时在settings.py中配置logger<br>　　<br>·  可以使用scrapy内置的发送邮件模块：<br>　　from scrapy.mail import Mailsender<br>　　mailer = MailSender()//smtphost、mailfrom、smtpuser、smtppass、smtpport<br>　　mailer.send(to=[],subject,body,cc,attaches)<br>　　我感觉这个模块可以用来监测某个网页的信息，一旦发生变化可以立即通知相关单位。。。</p>
+<p>·  可以使用代理ip来对网页进行爬取：<br>　　一个叫“西刺”的网站提供免费代理ip，可以使用这种手段来应对server对爬虫的封锁。
+　　</p>
+<p>·  在多级页面爬取时，在parse函数中，可以使用如下代码来进行item的传递：<br>　　yield scrapy.Request(url=…,meta={‘item’:item},callback=self.parse_detail)<br>　　在parse_detail中：<br>　　Item = response.meta[‘item’]<br>　　并且，如果要求是存成excel，可以先存csv，再另存为。
+　　</p>
+<p>　　
+　　</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/wx.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,111 +229,89 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/27/scrapy知识点梳理（总结向）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/26/浅谈POST方法与GET方法的区别/" class="archive-article-date">
-  	<time datetime="2017-05-26T12:14:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/26/浅谈POST方法与GET方法的区别/">浅谈POST方法与GET方法的区别</a>
-    </h1>
+  
+    <a href="/2017/05/26/浅谈POST方法与GET方法的区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅谈POST方法与GET方法的区别</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-HTTP协议</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/20/我的第一篇文章/" class="archive-article-date">
-  	<time datetime="2017-05-20T10:29:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/20/我的第一篇文章/">我的第一篇文章</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/20/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-20T09:30:17.625Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/20/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -318,8 +334,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
