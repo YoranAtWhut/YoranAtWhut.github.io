@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Epiphany</title>
+  <title>Hello World | Epiphany</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="subtitle222">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Epiphany">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://yoursite.com/2017/07/23/hello-world/index.html">
 <meta property="og:site_name" content="Epiphany">
-<meta property="og:description" content="subtitle222">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:updated_time" content="2017-05-26T13:05:18.600Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Epiphany">
-<meta name="twitter:description" content="subtitle222">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
   
     <link rel="alternative" href="/atom.xml" title="Epiphany" type="application/atom+xml">
   
@@ -150,16 +151,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/23/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      Hello World
     </h1>
   
 
@@ -173,398 +172,44 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-        
-          <a class="article-more-a" href="/2017/07/23/hello-world/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/23/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-自然语言处理笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/03/自然语言处理笔记/">自然语言处理笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/03/自然语言处理笔记/" class="archive-article-date">
-  	<time datetime="2017-06-03T14:18:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>本文章节选自《数学之美》——吴军。
-</code></pre><p>　　　</p>
-<ul>
-<li><h2 id="统计语言模型："><a href="#统计语言模型：" class="headerlink" title="统计语言模型："></a>统计语言模型：</h2><p>S表示一连串特定顺序排列的词W1、W2、W3，……，而机器对于语言的识别从某种程度上来说，就是想知道S在文本中出现的可能性。<br>P（S）= P(W1)P(W2|W1)P(W3|W1W2)……P(WN|W1W2……)，现假设任何一个词出现的概率都只与前一个词有关（马尔可夫假设）。那么，可以得到P（S）= P(W1)P(W2|W1)P(W3|W2)……P(WN|WN-1)。——其中P（Wi|Wi-1）=P(Wi,Wi-1)/P(Wi)</p>
-</li>
-<li><h2 id="中文分词"><a href="#中文分词" class="headerlink" title="中文分词"></a>中文分词</h2></li>
-<li>最少词数理论分词：一句话应该分成数量最少的词串。</li>
-<li><p>用统计语言模型解决分析二义性：</p>
-<blockquote>
-<p>假定S有三种分法：</p>
-<blockquote>
-<p>A1A2A3……<br>B1B2B3……<br>C1C2C3……<br>选择对应P(S)最大的那个。</p>
-        
-          <a class="article-more-a" href="/2017/06/03/自然语言处理笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/03/自然语言处理笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-LINUX知识点梳理（复习向）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/29/LINUX知识点梳理（复习向）/">LINUX知识点梳理（复习向）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/29/LINUX知识点梳理（复习向）/" class="archive-article-date">
-  	<time datetime="2017-05-29T09:59:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。
-</code></pre><p>　　　</p>
-<ul>
-<li><h1 id="Linux文件系统："><a href="#Linux文件系统：" class="headerlink" title="Linux文件系统："></a>Linux文件系统：</h1><p>在Linux系统中，“设备即文件”，意即在linux下，所有的设备，都是以文件的形式存在的。都存在在/dev目录下。在/dev目录下的每个文件都对应一个设备。有字符设备，块设备和网络设备等等。这样的话，所有的设备你就都可以像访问文件一般的访问。比如你要访问串口,串口1对应的文件是”ttyS0”.打开文件/dev/ttyS0。往内写，就是往串口写，从文件读，就是从串口读。</p>
-        
-          <a class="article-more-a" href="/2017/05/29/LINUX知识点梳理（复习向）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">LINUX</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/29/LINUX知识点梳理（复习向）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-额。。。关于为什么开这个个人站" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/27/额。。。关于为什么开这个个人站/">额。。。关于为什么开这个个人站</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/27/额。。。关于为什么开这个个人站/" class="archive-article-date">
-  	<time datetime="2017-05-27T15:19:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  其实一开始只是觉得有个个人站很酷，所以就开通了。<br>  现在觉得，在这上面写点东西，不仅能够记录一些东西、不让某些东西轻易的划过，以期在将来某天回顾过去的时候，会使自己不觉得那么的乏善可陈；更重要的是，在写一些东西的同时，也能够审查自己的内心。当然，能记录的地方有很多，比如朋友圈，但我觉得那样像把自己的臭袜子放到别人鼻子边，不好，我不喜欢。也可以弄个私密的笔记本，可是这样的话，一来未必有动力，二来在直面内心的时候可能又过于鲜血淋漓。所以还是在这个平台上记录点东西，这样，在下笔时可能会加以粉饰、在处决内心的欲望时，才可能坚决果断又不至于血肉模糊。<br>  以上。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">-杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/27/额。。。关于为什么开这个个人站/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-scrapy知识点梳理（总结向）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/27/scrapy知识点梳理（总结向）/">Scrapy知识点梳理（总结向）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/27/scrapy知识点梳理（总结向）/" class="archive-article-date">
-  	<time datetime="2017-05-27T14:16:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。
-</code></pre><p>  本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：</p>
-<p>  Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br>  Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求进行修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持[1]。<br>
-        
-          <a class="article-more-a" href="/2017/05/27/scrapy知识点梳理（总结向）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/27/scrapy知识点梳理（总结向）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-浅谈POST方法与GET方法的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/浅谈POST方法与GET方法的区别/">浅谈POST方法与GET方法的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/26/浅谈POST方法与GET方法的区别/" class="archive-article-date">
-  	<time datetime="2017-05-26T12:14:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  在HTTP协议下，client与server进行交互有四种基本方法，分别为GET、POST、PUT、DELETE，分别对应为对网站资源的查、改、增、删操作。<br>  GET用于信息的获取，而且它应该是安全和幂等的，所谓安全是针对于server而言的，意即只可查看而无法修改信息；幂等则指对于同一个URL的多个请求应当返回同样的结果。<br>  POST表示可能对server上的资源进行修改的请求，例如，读者对新闻发表自己的评论，则将通过POST实现，因为在评论提交之后站点的资源已经不同了。事实上，对资源的增、删、改、查等操作，均可以通过GET/POST方法来实现，无需用到PUT和DELETE。</p>
-        
-          <a class="article-more-a" href="/2017/05/26/浅谈POST方法与GET方法的区别/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">HTTP协议</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/26/浅谈POST方法与GET方法的区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-我的第一篇文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/20/我的第一篇文章/">我的第一篇文章</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/20/我的第一篇文章/" class="archive-article-date">
-  	<time datetime="2017-05-20T10:29:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Just for test</p>
-
-      
-
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/wx.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -573,22 +218,85 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/20/我的第一篇文章/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/23/hello-world/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/06/03/自然语言处理笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">自然语言处理笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
 
   
+  
+  
+
+  
+
   
 
 
@@ -611,8 +319,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
