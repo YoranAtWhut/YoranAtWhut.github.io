@@ -239,11 +239,11 @@
         <pre><code>本文章节选自《数学之美》——吴军。
 </code></pre><p>　　　</p>
 <ul>
-<li><h2 id="统计语言模型："><a href="#统计语言模型：" class="headerlink" title="统计语言模型："></a>统计语言模型：</h2><p>S表示一连串特定顺序排列的词W1、W2、W3，……，而机器对于语言的识别从某种程度上来说，就是想知道S在文本中出现的可能性。<br>P（S）= P(W1)P(W2|W1)P(W3|W1W2)……P(WN|W1W2……)，现假设任何一个词出现的概率都只与前一个词有关（马尔可夫假设）。那么，可以得到P（S）= P(W1)P(W2|W1)P(W3|W2)……P(WN|WN-1)。——其中P（Wi|Wi-1）=P(Wi,Wi-1)/P(Wi)</p>
+<li><h2 id="统计语言模型："><a href="#统计语言模型：" class="headerlink" title="统计语言模型："></a>统计语言模型：</h2><p>&emsp;&emsp;S表示一连串特定顺序排列的词W1、W2、W3，……，而机器对于语言的识别从某种程度上来说，就是想知道S在文本中出现的可能性。<br>&emsp;&emsp;P（S）= P(W1)P(W2|W1)P(W3|W1W2)……P(WN|W1W2……)，现假设任何一个词出现的概率都只与前一个词有关（马尔可夫假设）。那么，可以得到P（S）= P(W1)P(W2|W1)P(W3|W2)……P(WN|WN-1)。——其中P（Wi|Wi-1）=P(Wi,Wi-1)/P(Wi)</p>
 </li>
 <li><h2 id="中文分词"><a href="#中文分词" class="headerlink" title="中文分词"></a>中文分词</h2></li>
-<li>最少词数理论分词：一句话应该分成数量最少的词串。</li>
-<li><p>用统计语言模型解决分析二义性：</p>
+<li>&emsp;&emsp;最少词数理论分词：一句话应该分成数量最少的词串。</li>
+<li><p>&emsp;&emsp;用统计语言模型解决分析二义性：</p>
         
           <a class="article-more-a" href="/2017/06/03/自然语言处理笔记/#more">more >></a>
         
@@ -376,7 +376,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>  其实一开始只是觉得有个个人站很酷，所以就开通了。<br>  现在觉得，在这上面写点东西，不仅能够记录一些东西、不让某些东西轻易的划过，以期在将来某天回顾过去的时候，会使自己不觉得那么的乏善可陈；更重要的是，在写一些东西的同时，也能够审查自己的内心。当然，能记录的地方有很多，比如朋友圈，但我觉得那样像把自己的臭袜子放到别人鼻子边，不好，我不喜欢。也可以弄个私密的笔记本，可是这样的话，一来未必有动力，二来在直面内心的时候可能又过于鲜血淋漓。所以还是在这个平台上记录点东西，这样，在下笔时可能会加以粉饰、在处决内心的欲望时，才可能坚决果断又不至于血肉模糊。<br>  以上。</p>
+        <p>  &emsp;&emsp;其实一开始只是觉得有个个人站很酷，所以就开通了。<br>  &emsp;&emsp;现在觉得，在这上面写点东西，不仅能够记录一些东西、不让某些东西轻易的划过，以期在将来某天回顾过去的时候，会使自己不觉得那么的乏善可陈；更重要的是，在写一些东西的同时，也能够审查自己的内心。当然，能记录的地方有很多，比如朋友圈，但我觉得那样像把自己的臭袜子放到别人鼻子边，不好，我不喜欢。也可以弄个私密的笔记本，可是这样的话，一来未必有动力，二来在直面内心的时候可能又过于鲜血淋漓。所以还是在这个平台上记录点东西，这样，在下笔时可能会加以粉饰、在处决内心的欲望时，才可能坚决果断又不至于血肉模糊。<br>  &emsp;&emsp;以上。</p>
 
       
 
@@ -436,8 +436,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <pre><code>本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。
-</code></pre><p>  本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：</p>
-<p>  Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br>  Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求进行修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持[1]。<br>
+</code></pre><p>  &emsp;&emsp;本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：</p>
+<p>  &emsp;&emsp;Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br>  &emsp;&emsp;Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求进行修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持[1]。<br>
         
           <a class="article-more-a" href="/2017/05/27/scrapy知识点梳理（总结向）/#more">more >></a>
         
@@ -453,15 +453,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -687,19 +687,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LINUX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
