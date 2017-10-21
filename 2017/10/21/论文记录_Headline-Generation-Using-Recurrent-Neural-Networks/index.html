@@ -6,28 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Conditional Generation by RNN &amp; Attention | Yoran | azure</title>
+  <title>论文记录_Headline-Generation-Using-Recurrent-Neural-Networks | Yoran | azure</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;emsp;&amp;emsp;本文谈的是基于“Attention”的“Generation”，要展开这个话题，我们需要首先来谈谈何为“Genration”，以及何为“Attention”，最终定义什么是基于“Attention”的“Generation”。  Generation：  &amp;emsp;&amp;emsp;什么是“Generation”呢？在我看来使用神经网络来生成的过程是这样的，神经网络按一个顺序一">
-<meta name="keywords" content="DeepLearning,RNN">
+  <meta name="description" content="Tensorflow中的实现：点击查看  1、概述 使用带Attention机制的LSTM来对文章进行自动摘要。 使用encoder对文章进行编码，decoder产生summarization。 使用了一种混合评价机制——用户评价及系统评价。  2、引言及现状 现有两种摘要方法：extractive和abstractive extractive：从原文中抽取相关段落作为摘要。 abstracti">
+<meta name="keywords" content="DeepLearning,Seq2Seq,Attention">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Conditional Generation by RNN &amp; Attention">
-<meta property="og:url" content="http://yoursite.com/2017/10/19/Conditional-Generation-by-RNN-Attention/index.html">
+<meta property="og:title" content="论文记录_Headline-Generation-Using-Recurrent-Neural-Networks">
+<meta property="og:url" content="http://yoursite.com/2017/10/21/论文记录_Headline-Generation-Using-Recurrent-Neural-Networks/index.html">
 <meta property="og:site_name" content="Yoran | azure">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;本文谈的是基于“Attention”的“Generation”，要展开这个话题，我们需要首先来谈谈何为“Genration”，以及何为“Attention”，最终定义什么是基于“Attention”的“Generation”。  Generation：  &amp;emsp;&amp;emsp;什么是“Generation”呢？在我看来使用神经网络来生成的过程是这样的，神经网络按一个顺序一">
-<meta property="og:image" content="http://yoursite.com/images/rnn_sentence.png">
-<meta property="og:image" content="http://yoursite.com/images/rnn_picture.png">
-<meta property="og:image" content="http://yoursite.com/images/conditional_gen.png">
-<meta property="og:image" content="http://yoursite.com/images/image_caption.png">
-<meta property="og:image" content="http://yoursite.com/images/encoder_decoder.png">
-<meta property="og:image" content="http://yoursite.com/images/attention.png">
-<meta property="og:image" content="http://yoursite.com/images/attention_translation.png">
-<meta property="og:image" content="http://yoursite.com/images/image_attention.png">
-<meta property="og:updated_time" content="2017-10-19T13:34:55.345Z">
+<meta property="og:description" content="Tensorflow中的实现：点击查看  1、概述 使用带Attention机制的LSTM来对文章进行自动摘要。 使用encoder对文章进行编码，decoder产生summarization。 使用了一种混合评价机制——用户评价及系统评价。  2、引言及现状 现有两种摘要方法：extractive和abstractive extractive：从原文中抽取相关段落作为摘要。 abstracti">
+<meta property="og:image" content="http://yoursite.com/images/lstm.png">
+<meta property="og:image" content="http://yoursite.com/images/result.png">
+<meta property="og:updated_time" content="2017-10-21T10:58:36.037Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Conditional Generation by RNN &amp; Attention">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;本文谈的是基于“Attention”的“Generation”，要展开这个话题，我们需要首先来谈谈何为“Genration”，以及何为“Attention”，最终定义什么是基于“Attention”的“Generation”。  Generation：  &amp;emsp;&amp;emsp;什么是“Generation”呢？在我看来使用神经网络来生成的过程是这样的，神经网络按一个顺序一">
-<meta name="twitter:image" content="http://yoursite.com/images/rnn_sentence.png">
+<meta name="twitter:title" content="论文记录_Headline-Generation-Using-Recurrent-Neural-Networks">
+<meta name="twitter:description" content="Tensorflow中的实现：点击查看  1、概述 使用带Attention机制的LSTM来对文章进行自动摘要。 使用encoder对文章进行编码，decoder产生summarization。 使用了一种混合评价机制——用户评价及系统评价。  2、引言及现状 现有两种摘要方法：extractive和abstractive extractive：从原文中抽取相关段落作为摘要。 abstracti">
+<meta name="twitter:image" content="http://yoursite.com/images/lstm.png">
   
     <link rel="alternative" href="/atom.xml" title="Yoran | azure" type="application/atom+xml">
   
@@ -161,51 +155,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Conditional-Generation-by-RNN-Attention" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-论文记录_Headline-Generation-Using-Recurrent-Neural-Networks" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Conditional Generation by RNN &amp; Attention
+      论文记录_Headline-Generation-Using-Recurrent-Neural-Networks
     </h1>
   
 
         
-        <a href="/2017/10/19/Conditional-Generation-by-RNN-Attention/" class="archive-article-date">
-  	<time datetime="2017-10-19T12:09:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+        <a href="/2017/10/21/论文记录_Headline-Generation-Using-Recurrent-Neural-Networks/" class="archive-article-date">
+  	<time datetime="2017-10-21T09:51:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&emsp;&emsp;本文谈的是基于“Attention”的“Generation”，要展开这个话题，我们需要首先来谈谈何为“Genration”，以及何为“Attention”，最终定义什么是基于“Attention”的“Generation”。</p>
-<ul>
-<li><h2 id="Generation："><a href="#Generation：" class="headerlink" title="Generation："></a>Generation：</h2></li>
+        <ul>
+<li><code>Tensorflow</code>中的实现：<a href="">点击查看</a></li>
 </ul>
-<p>&emsp;&emsp;什么是“Generation”呢？在我看来使用神经网络来生成的过程是这样的，神经网络按一个顺序一个一个地生成一个结构化的object。先用短语生成举例，短语是由一个一个词构成的，这样的句子具有一定的结构，那么用神经网络生成这样一个短语的过程就是按顺序生成一个个词向量的过程：</p>
-<div align="center"><img src="/images/rnn_sentence.png" alt="“”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">使用RNN随机生成句子</font></div><br><a id="more"></a><br><br>&emsp;&emsp;如图所示，首先输入的是<bos>符号代表的词向量，RNN的输出结果表示W1代表的词出现的概率最大，在第二个时间点，输入RNN的则是前一个时间片段RNN的隐层状态以及前一时刻的输出W1代表的词向量，然后生成在时间点2的单词/单字，如此循环往复，直到一个句子完整地被生成。<br>&emsp;&emsp;同样的过程也可以用来生成图片，和句子类似，图片也是由一个个component构成的，并且同样具有结构性，我们可以将图片的一个个pixel视作单词，这样就可以将生成句子的模型来直接生成图片：<br><div align="center"><img src="/images/rnn_picture.png" alt="“·”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">使用RNN随机生成图片</font></div>
-
-<p>&emsp;&emsp;我们可以将这种生成技术延伸至视频生成、手写字体生成（/机器作画）、以及声音信号的生成（使得机器人的声音听起来更像一个人）。</p>
-<ul>
-<li><h2 id="Conditional-Generation："><a href="#Conditional-Generation：" class="headerlink" title="Conditional Generation："></a>Conditional Generation：</h2></li>
+<h2 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h2><ul>
+<li>使用带<code>Attention</code>机制的<code>LSTM</code>来对文章进行自动摘要。</li>
+<li>使用encoder对文章进行编码，decoder产生summarization。</li>
+<li>使用了一种混合评价机制——用户评价及系统评价。</li>
 </ul>
-<p>&emsp;&emsp;那么什么是Conditional Generation呢？上述的生成方法是完全有神经网络参数决定object生成方向的，也即生成的object并不具备某种具体的意义，仅仅是基于统计数据产生的。那么如何让NN产生有意义的object呢？这时就可以用到conditional generation了，比如把一幅图作为输入传入NN，那么NN可以生成一个sentence，这个sentence不再是随机生成的，它可能输出的是“新垣结衣在跳舞”这样有意义的话，这个过程正是基于我们输入图片这一个条件（condition）的；再比如，在和机器人聊天的过程中，我们希望机器人回答我们的话是对我们之前说过的话的一个回应，而不是答非所问，这就需要聊天机器人根据之前的condition来生成回答：</p>
-<div align="center"><img src="/images/conditional_gen.png" alt="“”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">conditional generation</font></div>
-
-<p>  &emsp;&emsp;具体来说，我们可以把我们的condition以向量的形式作为RNN的输入，这样RNN生成的描述就是基于condition的了；对于图片，我们可以使用卷积神经网络来获得这张图片的向量形式的描述，然后将这个向量输入给后续的generative RNN，此即Image Caption：</p>
-<div align="center"><img src="/images/image_caption.png" alt="“······”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">使用RNN生成对图片的描述</font></div>
-
-<p>&emsp;&emsp;在构造聊天机器人的过程之中，我们会对自然人的输入进行encoder，将用户输入自然语言编码成向量形式，该向量即包含了用户的语义，然后将该向量作为condition输入另一个RNN来生成应对的自然语言，而在训练的过程中，这两个RNN的参数是同时进行的；这种技术同样可以用到机器翻译上（我们有时也将这种训练技术称作encoder-decoder）：</p>
-<div align="center"><img src="/images/encoder_decoder.png" alt="“······”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">自动问答技术</font></div>
-
-<ul>
-<li><h2 id="Attention："><a href="#Attention：" class="headerlink" title="Attention："></a>Attention：</h2></li>
+<h2 id="2、引言及现状"><a href="#2、引言及现状" class="headerlink" title="2、引言及现状"></a>2、引言及现状</h2><ul>
+<li>现有两种摘要方法：extractive和abstractive<ul>
+<li>extractive：从原文中抽取相关段落作为摘要。</li>
+<li>abstractive：模型根据语义对原文进行改写与总结。</li>
 </ul>
-<p>&emsp;&emsp;那么何为attention呢？顾名思义，attention意即我们并不关注全局信息，在生成局部信息时，我们只把我们的注意力放到condition中和当前要生成部位相关的部分，这是一种动态的生成方式，举个栗子，在进行机器翻译的时候，我们要翻译“机器学习”这个短语，那么我们在生成machine这个对应的单词时，更多考虑的则是原condition中的“机器”而并不在意“学习”。和原先的encoder-decoder相比，attention机制提供了更加强大的表达能力，在后一个RNN生成object的时候就更多地考虑结构上的信息。</p>
-<div align="center"><img src="/images/attention.png" alt="“······”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">带attention的generation</font></div><br>&emsp;&emsp;具体的做法则是这样的，对于将要翻译的句子，首先会将句子中的每个character都输入RNN并得到对应的输出值h1,h2,h3,h4,同时我们再定义多个数量和输出单词个数相同的向量z0，z1以及一个match函数，对于每一个变量z而言，我们都会计算每个隐层输出在当前z值的权重，计算的方法多种多样，可以是h和z的cos相似度；也可以是一个NN，这个NN的输入是h和z concat之后的新的向量，这个NN的参数会合另外两个RNN同时训练；也可以是transpose（h）Wz，最终得到一个scalar。在得到h1,h2,h3,h4在每个输出时刻对应的权重之后，会对他们进行softmax归一化，最后就可以计算每个输出时刻输出RNN的condition了，此时 c_time = sigma(alpha_i_time*hi_time)。那么此时的输入则是带有attention的condition了。<br><div align="center"><img src="/images/attention_translation.png" alt="“······”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">带attention的translation</font></div><br>&emsp;&emsp;这种技术有如何应用到Image Caption上呢？我们会对图片的不同region进行卷积，从而得到多个局部描述向量，在不同的输出时刻这些向量有不同的权重组，对这些向量进行加权求和得到当前输出时刻的condition进而生成带attention机制的image caption。<br><div align="center"><img src="/images/image_attention.png" alt="“······”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">带attention的iamge caption</font></div></bos>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>文章headlines通常是新闻首段的概要，论文利用了这种直觉，在训练时只使用首段作为训练数据。</li>
+<li>在文章中，作者着重关心以下几个问题：<ul>
+<li><code>encoder-decoder</code>模型在文章摘要领域的表现是否优于现有模型。</li>
+<li>Amazon的<code>AWS</code>是否可以满足<code>LSTM</code>在训练过程中对内存以及计算能力的要求。</li>
+<li><code>Tensorflow</code>+<code>AWS</code>这种组合架构能在何种程度上帮助我们实现一个这种模型？</li>
+<li><code>encoder-decoder</code>架构在文摘这一任务上的表现如何？</li>
+<li>模型能否通过<code>Turing test</code>？</li>
+</ul>
+</li>
+</ul>
+<h2 id="3、相关工作"><a href="#3、相关工作" class="headerlink" title="3、相关工作"></a>3、相关工作</h2><h3 id="3-1、前人工作"><a href="#3-1、前人工作" class="headerlink" title="3.1、前人工作"></a>3.1、前人工作</h3><p>&emsp;&emsp;Lopyrev使用encoder-decoder以及attention机制产生标题，首先会对模型输入训练数据，每个时间片段输入的数据都是一个word（分布式表示），之后词向量会输入一个多层RNN中，待将所有单词输入RNN之后，得到隐层状态h。接下来是decoder阶段，首先一个结束标记输入decoder，词嵌入层将符号转换为分布式表示。通过encoder-decoder和attention机制，decoder逐个产生标题单词直到一个结束标志。在每生成一个单词之后，生成的单词会作为下一个时间片段的输入。最后一步称为<code>“teacher forcing”</code>：expected word会被输入至decoder中。</p>
+<h3 id="3-2、评价方法"><a href="#3-2、评价方法" class="headerlink" title="3.2、评价方法"></a>3.2、评价方法</h3><p>&emsp;&emsp;主流上，有两种评价方法：intrinsic和extrinsic。</p>
+<ul>
+<li>大部分模型采用intrinsic，这种评价方法让自然人来评价摘要质量。4个最常用的评价指标分别是：<ul>
+<li>准确率</li>
+<li>召回率</li>
+<li>F值</li>
+<li>Rouge：生成摘要和原标题之间重叠的信息量。</li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;<code>Summary informativeness</code>是另一个重要的指标，它是指生成标题对原文的信息保有程度。</p>
+<ul>
+<li>另一方面，extrinsic则关注于生成标题的efficiency和acceptability以及生成标题在解决任务时的表现。比如，task-based评价会关注于生成文摘在回答与原文有关的问题这一任务时的表现。</li>
+</ul>
+<p>&emsp;&emsp;在本论文中，使用人工评价生成文摘的一致性、informativeness以及生成文摘和原文摘之间的相似性。</p>
+<h2 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h2><h3 id="4-1、数据集"><a href="#4-1、数据集" class="headerlink" title="4.1、数据集"></a>4.1、数据集</h3><p>&emsp;&emsp;English Gigaword 2nd edition dataset</p>
+<h3 id="4-2、数据预处理"><a href="#4-2、数据预处理" class="headerlink" title="4.2、数据预处理"></a>4.2、数据预处理</h3><p>&emsp;&emsp;通过一系列首段产生两个list：一个用来存储headlines，另一个用来存储文章首段sentences，最终得到1344565个headline-sentence pair。</p>
+<h3 id="4-3、词长度箱"><a href="#4-3、词长度箱" class="headerlink" title="4.3、词长度箱"></a>4.3、词长度箱</h3><p>&emsp;&emsp;我们希望在为长度为50-60词的文章生成标题时，使用的是从类似长度文章中学习得出的知识，因此我们通过统计首段的长度，将预处理后的数据分成不同的bucket。</p>
+<h3 id="4-4、Encoder-decoder-LSTM模型"><a href="#4-4、Encoder-decoder-LSTM模型" class="headerlink" title="4.4、Encoder-decoder LSTM模型"></a>4.4、Encoder-decoder LSTM模型</h3><p>&emsp;&emsp;<code>Encoder-decoder</code>模型是一种seq2seq模型。与之前的工作相比，该论文主要有两点不同。第一，该论文使用了5个buckets，先前的模型则使用了已给bucket，因此会对sentence进行比较少的padding。第二，该论文使用了一种greedy decoder而非beam search decoder。<br>&emsp;&emsp;一个带<code>Attention</code>机制的<code>LSTM</code>模型如下图所示：<br>    <div align="center"><img src="/images/lstm.png" alt="“”"></div><br>    <div align="center"><font color="#999900" size="2" face="宋体">encoder-decoder with attention</font></div><br>&emsp;&emsp;模型具有两个部分，第一部分是LSTM encoder，该部分对输入数据进行编码，第二部分是decoder，用于产生标题。在输入文章sentence时，使用倒序输入，因此，在产生标题时，原文中的头几个单词距离标题中的头几个单词更近，可以捕获短途依赖。倒序输入已经在机器翻译中被证明表现不俗。在产生标题的过程中，每个时间段生成的单词会被视作下一个时间段的输入，而attention机制则同时对encoder和decoder的隐层状态进行加权求和。<br>&emsp;&emsp;该文章使用tensorflow来完成带attention机制的seq2seq模型的构建，encoder与decoder的RNN均为3层，hidden units的个数均为512个，embedding维度也为512，dropout rate为0.2.除此之外，该论文4.3的统计结果设计了5个bucket（（30，10），（30，20），（40，10），（40，20），（50，20））（即5个不同的encoder-decoder模型）。bucket（a，b）中，a指文章长度，b指标题长度。</p>
+<h2 id="5、结果"><a href="#5、结果" class="headerlink" title="5、结果"></a>5、结果</h2><ul>
+<li>原始数据集分割：70%training、20%evaluation、10%testing</li>
+<li>超参数：{batch_size:128, learning_rate:0.5, decay_factor:0.99, epochs:10}</li>
+</ul>
+<p>&emsp;&emsp;论文从testing data中选取了3个good prediction和3个 bad prediction。在bad prediction中，模型会丢失重要信息如“cycling”，或者加入原文中不存在的信息如“bus crash”，亦或是文章标题由于bucket限制被迫终止。</p>
+<div align="center"><img src="/images/result.png" alt="“”"></div><br><div align="center"><font color="#999900" size="2" face="宋体">摘要结果</font></div>
       
 
       
@@ -248,7 +270,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RNN</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Seq2Seq</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Attention</a>
         		</li>
       		
 		</ul>
@@ -304,7 +330,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/19/Conditional-Generation-by-RNN-Attention/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/21/论文记录_Headline-Generation-Using-Recurrent-Neural-Networks/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -318,18 +344,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/10/21/论文记录_Headline-Generation-Using-Recurrent-Neural-Networks/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          论文记录_Headline-Generation-Using-Recurrent-Neural-Networks
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/08/05/伪物语/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">伪物语</div>
+    <a href="/2017/10/19/Conditional-Generation-by-RNN-Attention/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Conditional Generation by RNN &amp; Attention</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -344,7 +361,7 @@
   
 
   
-  <div id="SOHUCS" sid="Conditional-Generation-by-RNN-Attention" ></div> 
+  <div id="SOHUCS" sid="论文记录_Headline-Generation-Using-Recurrent-Neural-Networks" ></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cyt9NnxMx"; 

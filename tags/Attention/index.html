@@ -6,28 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Conditional Generation by RNN &amp; Attention | Yoran | azure</title>
+  <title>Tag: Attention | Yoran | azure</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;emsp;&amp;emsp;本文谈的是基于“Attention”的“Generation”，要展开这个话题，我们需要首先来谈谈何为“Genration”，以及何为“Attention”，最终定义什么是基于“Attention”的“Generation”。  Generation：  &amp;emsp;&amp;emsp;什么是“Generation”呢？在我看来使用神经网络来生成的过程是这样的，神经网络按一个顺序一">
-<meta name="keywords" content="DeepLearning,RNN">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Conditional Generation by RNN &amp; Attention">
-<meta property="og:url" content="http://yoursite.com/2017/10/19/Conditional-Generation-by-RNN-Attention/index.html">
+  <meta name="description" content="subtitle222">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yoran | azure">
+<meta property="og:url" content="http://yoursite.com/tags/Attention/index.html">
 <meta property="og:site_name" content="Yoran | azure">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;本文谈的是基于“Attention”的“Generation”，要展开这个话题，我们需要首先来谈谈何为“Genration”，以及何为“Attention”，最终定义什么是基于“Attention”的“Generation”。  Generation：  &amp;emsp;&amp;emsp;什么是“Generation”呢？在我看来使用神经网络来生成的过程是这样的，神经网络按一个顺序一">
-<meta property="og:image" content="http://yoursite.com/images/rnn_sentence.png">
-<meta property="og:image" content="http://yoursite.com/images/rnn_picture.png">
-<meta property="og:image" content="http://yoursite.com/images/conditional_gen.png">
-<meta property="og:image" content="http://yoursite.com/images/image_caption.png">
-<meta property="og:image" content="http://yoursite.com/images/encoder_decoder.png">
-<meta property="og:image" content="http://yoursite.com/images/attention.png">
-<meta property="og:image" content="http://yoursite.com/images/attention_translation.png">
-<meta property="og:image" content="http://yoursite.com/images/image_attention.png">
-<meta property="og:updated_time" content="2017-10-19T13:34:55.345Z">
+<meta property="og:description" content="subtitle222">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Conditional Generation by RNN &amp; Attention">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;本文谈的是基于“Attention”的“Generation”，要展开这个话题，我们需要首先来谈谈何为“Genration”，以及何为“Attention”，最终定义什么是基于“Attention”的“Generation”。  Generation：  &amp;emsp;&amp;emsp;什么是“Generation”呢？在我看来使用神经网络来生成的过程是这样的，神经网络按一个顺序一">
-<meta name="twitter:image" content="http://yoursite.com/images/rnn_sentence.png">
+<meta name="twitter:title" content="Yoran | azure">
+<meta name="twitter:description" content="subtitle222">
   
     <link rel="alternative" href="/atom.xml" title="Yoran | azure" type="application/atom+xml">
   
@@ -161,84 +150,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Conditional-Generation-by-RNN-Attention" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Conditional Generation by RNN &amp; Attention
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/10/21/论文记录_Headline-Generation-Using-Recurrent-Neural-Networks/" class="archive-article-date">
+  	<time datetime="2017-10-21T09:51:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/10/21/论文记录_Headline-Generation-Using-Recurrent-Neural-Networks/">论文记录_Headline-Generation-Using-Recurrent-Neural-Networks</a>
     </h1>
   
 
-        
-        <a href="/2017/10/19/Conditional-Generation-by-RNN-Attention/" class="archive-article-date">
-  	<time datetime="2017-10-19T12:09:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&emsp;&emsp;本文谈的是基于“Attention”的“Generation”，要展开这个话题，我们需要首先来谈谈何为“Genration”，以及何为“Attention”，最终定义什么是基于“Attention”的“Generation”。</p>
-<ul>
-<li><h2 id="Generation："><a href="#Generation：" class="headerlink" title="Generation："></a>Generation：</h2></li>
-</ul>
-<p>&emsp;&emsp;什么是“Generation”呢？在我看来使用神经网络来生成的过程是这样的，神经网络按一个顺序一个一个地生成一个结构化的object。先用短语生成举例，短语是由一个一个词构成的，这样的句子具有一定的结构，那么用神经网络生成这样一个短语的过程就是按顺序生成一个个词向量的过程：</p>
-<div align="center"><img src="/images/rnn_sentence.png" alt="“”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">使用RNN随机生成句子</font></div><br><a id="more"></a><br><br>&emsp;&emsp;如图所示，首先输入的是<bos>符号代表的词向量，RNN的输出结果表示W1代表的词出现的概率最大，在第二个时间点，输入RNN的则是前一个时间片段RNN的隐层状态以及前一时刻的输出W1代表的词向量，然后生成在时间点2的单词/单字，如此循环往复，直到一个句子完整地被生成。<br>&emsp;&emsp;同样的过程也可以用来生成图片，和句子类似，图片也是由一个个component构成的，并且同样具有结构性，我们可以将图片的一个个pixel视作单词，这样就可以将生成句子的模型来直接生成图片：<br><div align="center"><img src="/images/rnn_picture.png" alt="“·”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">使用RNN随机生成图片</font></div>
-
-<p>&emsp;&emsp;我们可以将这种生成技术延伸至视频生成、手写字体生成（/机器作画）、以及声音信号的生成（使得机器人的声音听起来更像一个人）。</p>
-<ul>
-<li><h2 id="Conditional-Generation："><a href="#Conditional-Generation：" class="headerlink" title="Conditional Generation："></a>Conditional Generation：</h2></li>
-</ul>
-<p>&emsp;&emsp;那么什么是Conditional Generation呢？上述的生成方法是完全有神经网络参数决定object生成方向的，也即生成的object并不具备某种具体的意义，仅仅是基于统计数据产生的。那么如何让NN产生有意义的object呢？这时就可以用到conditional generation了，比如把一幅图作为输入传入NN，那么NN可以生成一个sentence，这个sentence不再是随机生成的，它可能输出的是“新垣结衣在跳舞”这样有意义的话，这个过程正是基于我们输入图片这一个条件（condition）的；再比如，在和机器人聊天的过程中，我们希望机器人回答我们的话是对我们之前说过的话的一个回应，而不是答非所问，这就需要聊天机器人根据之前的condition来生成回答：</p>
-<div align="center"><img src="/images/conditional_gen.png" alt="“”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">conditional generation</font></div>
-
-<p>  &emsp;&emsp;具体来说，我们可以把我们的condition以向量的形式作为RNN的输入，这样RNN生成的描述就是基于condition的了；对于图片，我们可以使用卷积神经网络来获得这张图片的向量形式的描述，然后将这个向量输入给后续的generative RNN，此即Image Caption：</p>
-<div align="center"><img src="/images/image_caption.png" alt="“······”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">使用RNN生成对图片的描述</font></div>
-
-<p>&emsp;&emsp;在构造聊天机器人的过程之中，我们会对自然人的输入进行encoder，将用户输入自然语言编码成向量形式，该向量即包含了用户的语义，然后将该向量作为condition输入另一个RNN来生成应对的自然语言，而在训练的过程中，这两个RNN的参数是同时进行的；这种技术同样可以用到机器翻译上（我们有时也将这种训练技术称作encoder-decoder）：</p>
-<div align="center"><img src="/images/encoder_decoder.png" alt="“······”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">自动问答技术</font></div>
-
-<ul>
-<li><h2 id="Attention："><a href="#Attention：" class="headerlink" title="Attention："></a>Attention：</h2></li>
-</ul>
-<p>&emsp;&emsp;那么何为attention呢？顾名思义，attention意即我们并不关注全局信息，在生成局部信息时，我们只把我们的注意力放到condition中和当前要生成部位相关的部分，这是一种动态的生成方式，举个栗子，在进行机器翻译的时候，我们要翻译“机器学习”这个短语，那么我们在生成machine这个对应的单词时，更多考虑的则是原condition中的“机器”而并不在意“学习”。和原先的encoder-decoder相比，attention机制提供了更加强大的表达能力，在后一个RNN生成object的时候就更多地考虑结构上的信息。</p>
-<div align="center"><img src="/images/attention.png" alt="“······”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">带attention的generation</font></div><br>&emsp;&emsp;具体的做法则是这样的，对于将要翻译的句子，首先会将句子中的每个character都输入RNN并得到对应的输出值h1,h2,h3,h4,同时我们再定义多个数量和输出单词个数相同的向量z0，z1以及一个match函数，对于每一个变量z而言，我们都会计算每个隐层输出在当前z值的权重，计算的方法多种多样，可以是h和z的cos相似度；也可以是一个NN，这个NN的输入是h和z concat之后的新的向量，这个NN的参数会合另外两个RNN同时训练；也可以是transpose（h）Wz，最终得到一个scalar。在得到h1,h2,h3,h4在每个输出时刻对应的权重之后，会对他们进行softmax归一化，最后就可以计算每个输出时刻输出RNN的condition了，此时 c_time = sigma(alpha_i_time*hi_time)。那么此时的输入则是带有attention的condition了。<br><div align="center"><img src="/images/attention_translation.png" alt="“······”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">带attention的translation</font></div><br>&emsp;&emsp;这种技术有如何应用到Image Caption上呢？我们会对图片的不同region进行卷积，从而得到多个局部描述向量，在不同的输出时刻这些向量有不同的权重组，对这些向量进行加权求和得到当前输出时刻的condition进而生成带attention机制的image caption。<br><div align="center"><img src="/images/image_attention.png" alt="“······”"></div><br><div align="center"><font color="#999999" size="2" face="宋体">带attention的iamge caption</font></div></bos>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/wx.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -248,113 +189,29 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RNN</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Seq2Seq</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Attention</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/19/Conditional-Generation-by-RNN-Attention/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/10/21/论文记录_Headline-Generation-Using-Recurrent-Neural-Networks/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          论文记录_Headline-Generation-Using-Recurrent-Neural-Networks
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/08/05/伪物语/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">伪物语</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    </div></section>
   
 
-  
-  <div id="SOHUCS" sid="Conditional-Generation-by-RNN-Attention" ></div> 
-<script type="text/javascript"> 
-(function(){ 
-var appid = "cyt9NnxMx"; 
-var conf = "prod_78ff94c1995ef054045703304175f363"; 
-var width = window.innerWidth || document.documentElement.clientWidth; 
-if (width < 960) { 
-window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
-  
-
-  
+    
 
 
           </div>
@@ -377,9 +234,9 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
