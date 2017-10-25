@@ -6,19 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Scrapy知识点梳理（总结向） | Yoran | azure</title>
+  <title>Tag: NER | Yoran | azure</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。   &amp;emsp;&amp;emsp;本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：   &amp;emsp;&amp;emsp;Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化">
-<meta name="keywords" content="技术,scrapy,爬虫">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Scrapy知识点梳理（总结向）">
-<meta property="og:url" content="http://yoursite.com/2017/05/27/scrapy知识点梳理（总结向）/index.html">
+  <meta name="description" content="subtitle222">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yoran | azure">
+<meta property="og:url" content="http://yoursite.com/tags/NER/index.html">
 <meta property="og:site_name" content="Yoran | azure">
-<meta property="og:description" content="本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。   &amp;emsp;&amp;emsp;本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：   &amp;emsp;&amp;emsp;Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化">
-<meta property="og:updated_time" content="2017-08-07T01:16:30.242Z">
+<meta property="og:description" content="subtitle222">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Scrapy知识点梳理（总结向）">
-<meta name="twitter:description" content="本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。   &amp;emsp;&amp;emsp;本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：   &amp;emsp;&amp;emsp;Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化">
+<meta name="twitter:title" content="Yoran | azure">
+<meta name="twitter:description" content="subtitle222">
   
     <link rel="alternative" href="/atom.xml" title="Yoran | azure" type="application/atom+xml">
   
@@ -152,208 +150,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-scrapy知识点梳理（总结向）" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Scrapy知识点梳理（总结向）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/10/25/论文记录-Bidirectional-LSTM-CRF-Models-for-sequence-tagging/" class="archive-article-date">
+  	<time datetime="2017-10-25T03:08:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/10/25/论文记录-Bidirectional-LSTM-CRF-Models-for-sequence-tagging/">论文记录_Bidirectional LSTM-CRF Models for sequence tagging</a>
     </h1>
   
 
-        
-        <a href="/2017/05/27/scrapy知识点梳理（总结向）/" class="archive-article-date">
-  	<time datetime="2017-05-27T14:16:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>本文章允许在知识共享署名-相同方式共享3.0协议和GNU自由文档许可证下修改和再使用。
-</code></pre><p>  &emsp;&emsp;本文并不涉及一个具体的scrapy如何创建与实现，只是罗列出我对于这个框架的一些思索以及一些我不太清楚或没用过的知识点，权当笔记、用以复习：</p>
-<p>  &emsp;&emsp;Scrapy，Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。<br>  &emsp;&emsp;Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求进行修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持[1]。<br><a id="more"></a></p>
-<p>  &emsp;&emsp;整个Scrapy框架为5+2结构，分别对应为spider、engine、scheduler、downloader、pipeline以及spider middleware和downloader middleware，各个模块的功能职责分别为：<br>  1.spider：作为整个工程的起点，主要工作是产生要爬取的网页的链接以及处理从downloader返回的response。通过指令scrapy genspider spidername生成。具体实现需要用户进行自定义。<br>  2.engine：负责调度的模块，一般不需修改。Spider的请求即通过此模块通往scheduler模块。<br>  3.scheduler：顾名思义，用以调度spider的爬取请求，在此产生的请求是真实的请求，通过engine模块传给downloader。<br>  4.downloader：此模块会对网页进行爬取，一般不做改动。<br>  5.pipeline：处理从spider处获得的item项，用以对数据进行去重、或入库等，需要用户自定义。 </p>
-<h2 id=""><a href="#" class="headerlink" title="　"></a>　</h2><ul>
-<li>&emsp;&emsp;可以在scrapy中引入日志，举例如下：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> logging</div><div class="line">logger = logging.getLogger(‘mycostomlogger’)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySpider</span><span class="params">(Scrapy.spider)</span>:</span></div><div class="line">　　　...</div><div class="line">　　　<span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self,response)</span>:</span></div><div class="line">　　　Logger.info(‘content’,response.url)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>　　&emsp;&emsp;此时在settings.py中配置logger
-　　</p>
-<ul>
-<li>&emsp;&emsp;可以使用scrapy内置的发送邮件模块：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">　　<span class="keyword">from</span> scrapy.mail <span class="keyword">import</span> Mailsender</div><div class="line">　　mailer = MailSender()//smtphost、mailfrom、smtpuser、smtppass、smtpport</div><div class="line">　　mailer.send(to=[],subject,body,cc,attaches)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>　　&emsp;&emsp;我感觉这个模块可以用来监测某个网页的信息，一旦发生变化可以立即通知相关单位。。。</p>
-<ul>
-<li>&emsp;&emsp;可以使用代理ip来对网页进行爬取：<br>　　&emsp;&emsp;一个叫“西刺”的网站提供免费代理ip，可以使用这种手段来应对server对爬虫的封锁。
-　　</li>
-<li>&emsp;&emsp;在多级页面爬取时，在parse函数中，可以使用如下代码来进行item的传递：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　<span class="keyword">yield</span> scrapy.Request(url=...,meta=&#123;‘item’:item&#125;,callback=self.parse_detail)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>　　&emsp;&emsp;在parse_detail中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">　　Item = response.meta[‘item’]</div></pre></td></tr></table></figure></p>
-<p>　　&emsp;&emsp;并且，如果要求是存成excel，可以先存csv，再另存为。
-　　</p>
-<p>　　　[1] 百度百科
-　　</p>
-<p>　　
-　　</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/wx.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BI-LSTM</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NER</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/27/scrapy知识点梳理（总结向）/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/05/27/额。。。关于为什么开这个个人站/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          额。。。关于为什么开这个个人站
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/05/26/浅谈POST方法与GET方法的区别/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">浅谈POST方法与GET方法的区别</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    </div></section>
   
 
-  
-  <div id="SOHUCS" sid="scrapy知识点梳理（总结向）" ></div> 
-<script type="text/javascript"> 
-(function(){ 
-var appid = "cyt9NnxMx"; 
-var conf = "prod_78ff94c1995ef054045703304175f363"; 
-var width = window.innerWidth || document.documentElement.clientWidth; 
-if (width < 960) { 
-window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
-  
-
-  
+    
 
 
           </div>
@@ -376,9 +230,9 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
