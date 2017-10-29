@@ -152,6 +152,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-课程记录-Language-Modeling" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/29/课程记录-Language-Modeling/">课程记录_Language Modeling</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/29/课程记录-Language-Modeling/" class="archive-article-date">
+  	<time datetime="2017-10-29T07:22:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><code>Deep Learning for Language Modeling</code>课程地址：<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS17.html" target="_blank" rel="external">点击查看</a></li>
+</ul>
+<h1 id="Language-Modeling"><a href="#Language-Modeling" class="headerlink" title="Language Modeling"></a>Language Modeling</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li>语言模型的实质就是估计一个句子产生的概率。换言之，就是估计一个词语序列出现的概率<ul>
+<li>对于一个词语序列：W1,W2,W3,…,Wn</li>
+<li>估计概率P（W1,W2,W3,…,Wn）</li>
+</ul>
+</li>
+<li>语言模型的应用举例：<ul>
+<li>语音识别<ul>
+<li>不同的句子可能有相同的读音，使用语言模型就可以计算出这些具有相同读音的句子各自产生的概率，从而舍弃那些概率低的句子，返回产生概率高的句子。</li>
+</ul>
+</li>
+<li>句子生成<ul>
+<li>可以生成一些符合语义和语法的句子，作为人机交互的接口</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实现方法<ul>
+<li>N-gram</li>
+<li>深度神经网络</li>
+</ul>
+</li>
+</ul>
+<h2 id="N-gram"><a href="#N-gram" class="headerlink" title="N-gram"></a>N-gram</h2><p>&emsp;&emsp;对于如何估计一个词语序列的产生概率，在过去一个很长的时间内都采用了N-gram的方法，这个方法的利用了词语之间的依赖性，通过统计大量的文本数据来获取一个词语的条件概率，最终通过这些条件概率来获得一个句子的产生概率。比如我们要计算“wreck a nice beach”的产生概率，在2-gram的情况下，我们会计算各个单词的条件概率P(wreck|START)、P(a|wreck)…最终将这些条件概率相乘就得到了整个句子的产生概率。而这些条件概率则是通过统计得到的：P(beach|nice) = count（nice beach）/ count（nice）。3-gram和4-gram的情况类似。但是这种方法有一个缺点，即我们要计算的句子中经常会出现未登录词，或者未登录的组合，这样的话，即使这个句子本身是有意义的，产生也会被估计为0。<br>&emsp;&emsp;为了解决上述问题，相关人员借鉴了推荐系统的算法，在对文本数据进行统计之后，我们得到了一个history-vocabulary矩阵，矩阵中的元素即为2-gram里的条件概率。<br>    <div align="center"><img src="/images/2_gram_mat.png" alt="“”"></div><br>    <div align="center"><font color="#999900" size="2" face="宋体">2-gram条件概率矩阵</font></div><br>&emsp;&emsp;矩阵里的每个history和vocabulary对应的Vi和Hi都是一个个向量，是我们要通过这些概率学习得到的，那么如何学习得到这些向量呢？一方面可以使用奇异值分解的方法，但好像效果不太好，另一方面可以使用梯度下降法，在这个方法下，我们希望Vi·Hj得到的scalar和Nij的值越接近越好，我们定义一个error函数：<br>    <div align="center"><img src="/images/mat_error.png" alt="“”"></div><br>    <div align="center"><font color="#999900" size="2" face="宋体">error函数</font></div><br>&emsp;&emsp;在这个矩阵中，Vi和Hi都是randomly initialized，之后求得error对每个矩阵中的每个元素的梯度，并进行迭代，最终得到收敛的向量。而且对于相似的词语他们对应的向量也比较相似，比如“猫”和“狗”对应的向量就很类似。那么在计算一个句子的产生概率时就使用向量之间的点乘结果来作为相应的条件概率，这样，对于未登录组合也不会产生概率为0的结果，而且对于相似的组合也能产生相似的概率，比如“一只猫在跑”和“一只狗在跳”。我们认为在这样一个Matrix Factorization的过程中，自动完成了smoothing这个步骤。</p>
+<h2 id="NN-based-Language-Modeling"><a href="#NN-based-Language-Modeling" class="headerlink" title="NN-based Language Modeling"></a>NN-based Language Modeling</h2><p>&emsp;&emsp;在N-gram模型中，我们计算一个句子的产生概率是通过计算各个条件概率的乘积来得到的，NN-based LM也类似，不同之处在于我们现在不通过统计手段来获得条件概率，我们使用神经网络来获得条件概率。我们将一个词语输入进神经网络，输出则是一个向量，向量的维度是vocabulary_size,每个元素的值都是某一个词语作为下一个词语的概率，如下所示：<br>    <div align="center"><img src="/images/nn_based_lm.png" alt="“”"></div><br>    <div align="center"><font color="#999900" size="2" face="宋体">NN_based LM</font></div><br>&emsp;&emsp;我们还可以使用RNN来进行LM，在这个模型中，我们的每个输出都依赖于之前所有的输入，因此输出的结果也会更加合理。<br>    <div align="center"><img src="/images/rnn_based_lm.png" alt="“”"></div><br>    <div align="center"><font color="#999900" size="2" face="宋体">RNN_based LM</font></div></p>
+<h2 id="Matrix-Factorization-和-NN的类似之处"><a href="#Matrix-Factorization-和-NN的类似之处" class="headerlink" title="Matrix Factorization 和 NN的类似之处"></a>Matrix Factorization 和 NN的类似之处</h2><p>&emsp;&emsp;我们可以将Matrix Factorization看作一种简化的NN-based LM，在这个LM中，输入的是one-hot vector，通过一个[vocabulary_size,dim]的系数矩阵我们得到隐层数据Hi，之后将隐层数据和另一个系数矩阵相乘（该系数矩阵的元素是Matrix Factorization中的vocabulary的向量）即可得到一个输出向量，维度为vocabulary_size,其中每个元素都是对应单词的概率。<br>    <div align="center"><img src="/images/nn_mat.png" alt="“”"></div><br>    <div align="center"><font color="#999900" size="2" face="宋体">将Matrix Factorization视作一种NN</font></div></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepLearning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/29/课程记录-Language-Modeling/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-论文记录-Bidirectional-LSTM-CRF-Models-for-sequence-tagging" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -693,15 +784,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -762,11 +853,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">HTTP协议</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">HTTP协议</a>
         		</li>
       		
 		</ul>
@@ -791,54 +882,10 @@
 
 
   
-    <article id="post-我的第一篇文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/20/我的第一篇文章/">我的第一篇文章</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/20/我的第一篇文章/" class="archive-article-date">
-  	<time datetime="2017-05-20T10:29:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Just for test</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/20/我的第一篇文章/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -927,18 +974,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">-杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">HTTP协议</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
@@ -947,11 +982,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BI-LSTM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NER</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -963,11 +994,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Seq2Seq</a>
+                <a href="javascript:void(0)" class="js-tag color1">LINUX</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Attention</a>
+                <a href="javascript:void(0)" class="js-tag color3">BI-LSTM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NER</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">HTTP协议</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -975,7 +1014,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LINUX</a>
+                <a href="javascript:void(0)" class="js-tag color4">-杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Seq2Seq</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Attention</a>
               </li>
             
             <div class="clearfix"></div>
