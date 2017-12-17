@@ -152,26 +152,124 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2017总结-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/17/test/">test</a>
+      <a class="article-title" href="/2017/12/17/2017总结-2/">2017总结(2)</a>
     </h1>
   
 
         
-        <a href="/2017/12/17/test/" class="archive-article-date">
-  	<time datetime="2017-12-17T10:47:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-17</time>
+        <a href="/2017/12/17/2017总结-2/" class="archive-article-date">
+  	<time datetime="2017-12-17T13:43:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
+        <p><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script><br>&emsp;&emsp;吐槽完了，现在把今年学过的东西复习一下，顺便立一个小小的目标——希望明年可以去百度IDG或者达摩院或者腾讯 AI lab 去实习。</p>
+<ul>
+<li><h1 id="一、统计机器学习基础"><a href="#一、统计机器学习基础" class="headerlink" title="一、统计机器学习基础"></a>一、统计机器学习基础</h1><h2 id="1、监督学习"><a href="#1、监督学习" class="headerlink" title="1、监督学习"></a>1、监督学习</h2><ul>
+<li><code>输入空间</code>：输入所有可能的取值的集合。</li>
+<li><code>输出空间</code>：输出所有可能的取值的集合。</li>
+<li>每个具体的输入是一个<code>实例</code>，通常由<code>特征向量</code>表示，这时，所有特征向量存在的空间称为<code>特征空间</code>。（特征空间有时和输入空间相同，有时则不同，不同的时候就需要将输入空间映射到特征空间。）</li>
+<li>联合概率分布：监督学习假设输入与输出随机变量X和Y服从<code>联合概率分布P(X,Y)</code>，X和Y具有联合概率分布的假设就是监督学习关于数据的基本假设。</li>
+<li><code>假设空间</code>：监督学习的目的在于学习一个由输入到输出的映射，这个映射由<code>模型</code>表示。模型属于由输入空间到输出空间的映射的集合，这个集合就是假设空间。假设空间的确定即意味着学习范围的确定。监督学习的模型可以是<code>概率模型</code>或<code>判别模型</code>，由条件概率分布P(Y|X)或者决策函数Y=f(X)决定。</li>
+<li><p>在监督学习中，假设训练数据与测试数据是依联合概率分布P(X,Y)独立同分布的。</p>
+<h2 id="2、统计学习三要素"><a href="#2、统计学习三要素" class="headerlink" title="2、统计学习三要素"></a>2、统计学习三要素</h2><p>方法 = 模型+策略+算法</p>
+<h3 id="1）模型"><a href="#1）模型" class="headerlink" title="1）模型"></a>1）模型</h3><p>&emsp;&emsp;在监督学习中，模型即为所要学习的条件概率分布式或决策函数，模型的假设空间包含所有可能的条件概率分布或决策函数。<br>&emsp;&emsp;针对判别模型，可以得到其假设空间为$${\cal F}=\lbrace f|Y=f(X)\rbrace$$&emsp;&emsp;其中X和Y是定义在输入空间和输出空间上的变量，这时集合通常是由一个参数向量构成的函数族\({\cal F}=\lbrace f|Y=f_\theta(X),\theta \in R^n\rbrace\)<br>&emsp;&emsp;参数向量属于参数空间。</p>
+<p>&emsp;&emsp;假设空间也可以定义为条件概率的集合$${\cal F}=\lbrace P|P(Y|X)\rbrace$$&emsp;&emsp;这时\({\cal F}\)通常是由一个参数向量决定的条件概率分布族\({\cal F}=\lbrace P|P_\theta(Y|X),\theta \in R^n\rbrace\)</p>
+<h3 id="2-策略"><a href="#2-策略" class="headerlink" title="2)策略"></a>2)策略</h3><p>统计机器学习的目的在于从假设空间中选取最优模型。</p>
+</li>
+<li><p>损失函数：度量模型一次预测的好坏</p>
+</li>
+<li><p>风险函数：度量平均意义下的模型预测的好坏。</p>
+<p>i) 模型f(x)关于训练数据的平均损失称为经验风险，记作\({\cal R_{emp}}\)</p>
+<p>$${\cal R_{emp}} = {1 \over N} \sum_i^N L(y_i,f(x_i))$$<br>&emsp;&emsp;经验风险最小化的策略认为，经验风险最小的模型即为最优模型。根据这一<code>策略</code>，按经验风险最小化求最优模型即为求解最优化问题。</p>
+<p>ii)结构风险最小化是为了防止过拟合而提出的策略，它是在经验风险之后再加上正则化项，它的定义为：<br>$${\cal R_{emp}} = {1 \over N} \sum_i^N L(y_i,f(x_i)) + \lambda J(f)$$<br>&emsp;&emsp;其中\(\lambda J(f)\)是模型复杂度。<br>&emsp;&emsp;结构风险最小的策略认为，结构风险最小的模型即为最优模型。根据这一<code>策略</code>，按结构风险最小化求最优模型即为求解最优化问题。</p>
+<h3 id="3）算法"><a href="#3）算法" class="headerlink" title="3）算法"></a>3）算法</h3><p>&emsp;&emsp;学习模型的具体算法。统计机器学习基于训练数据集，根据学习策略，从假设空间中选取最优模型，算法即考虑用什么样的方法求解最优模型。</p>
+<h2 id="正则化与交叉验证"><a href="#正则化与交叉验证" class="headerlink" title="正则化与交叉验证"></a>正则化与交叉验证</h2><h3 id="1）正则化"><a href="#1）正则化" class="headerlink" title="1）正则化"></a>1）正则化</h3><p>&emsp;&emsp;正则化是结构经验风险最小化的实现，是在经验风险上加一个正则化项，正则化项一般是模型复杂度的单调递增函数。正则化项可以是参数向量的L1范数，也可以是参数向量的L2范数。</p>
+<h3 id="2）交叉验证"><a href="#2）交叉验证" class="headerlink" title="2）交叉验证"></a>2）交叉验证</h3><p>&emsp;&emsp;当数据集较大时，训练集用于训练模型，验证集用于模型选择，测试集用于对学习方法的评估。但由于许多实际应用中数据是不充分的，为了选择好的模型，可以采用交叉验证的方法。交叉验证的基本思想是重复的使用数据。<br>&emsp;&emsp;i)简单交叉验证：先随机将已给数据分为两部分，一部分作为训练集，另一部分作为测试集，然后用训练集在各种条件下（如不同参数个数）训练模型，从而得到不同模型，在测试机上评估各个模型的测试误差，选出最佳的模型。<br>&emsp;&emsp;ii)S折交叉验证：先随机地将数据分为S个互不相交地大小相同地子集，然后用S-1个子集地数据用于训练，利用余下的子集作为测试集；将此过程对可能的S种选择重复进行，最后选出S次测评中平均测试误差最小的模型。</p>
+<h2 id="生成模型与判别模型"><a href="#生成模型与判别模型" class="headerlink" title="生成模型与判别模型"></a>生成模型与判别模型</h2><p>&emsp;&emsp;监督学习可以分为生成方法和判别方法。<br>&emsp;&emsp;1）生成方法由数据学习联合概率分布P(X,Y)，然后求出条件概率分布P(Y|X)作为预测的模型，即生成模型：<br>$$P(Y|X) = {P(X,Y) \over P(x)}$$<br>&emsp;&emsp;2)判别法由数据直接学习决策函数f(x)或条件概率分布P(Y|X)作为预测模型，即判别模型。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">总结</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">统计机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/17/2017总结-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-2017总结(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/17/2017总结(1)/">2017总结（1）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/17/2017总结(1)/" class="archive-article-date">
+  	<time datetime="2017-12-17T11:14:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div align="center"><img src="/images/hust.jpg" alt="“”"></div>
+
+
+<p>&emsp;&emsp;2017年即将结束，今年发生了很多事，于我而言不再乏善可陈，在一次又一次感受到内心秩序的崩坏与重建之后，我突然明白了，每个人内心的秩序，就是他所认可的社会的秩序，每个人都凭借内心的秩序在世界上找到自我的位置，用不同的方式表达对生而为人的尊重，或温柔或激烈或跌宕地活着，庄严而有序。</p>
+<p>&emsp;&emsp;这些“庄严而有序”汇集起来，构成了外部世界的运行秩序。</p>
+<p>&emsp;&emsp;大家各就各位却同心协力，让诚信、谦恭、道义、正直、教养等等正知、正念，种在每个人的心中，扎根于生活文化的内核深处，使世界最终逐渐变得和谐而有秩序。</p>
+        
+          <a class="article-more-a" href="/2017/12/17/2017总结(1)/#more">more >></a>
         
       
 
@@ -180,11 +278,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/17/test/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/17/2017总结(1)/">展开全文 >></a>
         </p>
       
 
@@ -778,65 +887,6 @@
 
 
   
-    <article id="post-额。。。关于为什么开这个个人站" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/27/额。。。关于为什么开这个个人站/">额。。。关于为什么开这个个人站</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/27/额。。。关于为什么开这个个人站/" class="archive-article-date">
-  	<time datetime="2017-05-27T15:19:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  &emsp;&emsp;其实一开始只是觉得有个个人站很酷，所以就开通了。<br>  &emsp;&emsp;现在觉得，在这上面写点东西，不仅能够记录一些东西、不让某些东西轻易的划过，以期在将来某天回顾过去的时候，会使自己不觉得那么的乏善可陈；更重要的是，在写一些东西的同时，也能够审查自己的内心。当然，能记录的地方有很多，比如朋友圈，但我觉得那样像把自己的臭袜子放到别人鼻子边，不好，我不喜欢。也可以弄个私密的笔记本，可是这样的话，一来未必有动力，二来在直面内心的时候可能又过于鲜血淋漓。所以还是在这个平台上记录点东西，这样，在下笔时可能会加以粉饰、在处决内心的欲望时，才可能坚决果断又不至于血肉模糊。<br>  &emsp;&emsp;以上。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">-杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/27/额。。。关于为什么开这个个人站/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -929,6 +979,18 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">复习 - 统计机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
               </li>
              
@@ -982,6 +1044,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Attention</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">总结 - 统计机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">统计机器学习</a>
               </li>
             
             <div class="clearfix"></div>
