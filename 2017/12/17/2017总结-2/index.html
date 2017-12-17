@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/17/2017总结-2/index.html">
 <meta property="og:site_name" content="Yoran | azure">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;吐槽完了，现在把今年学过的东西复习一下，顺便立一个小小的目标——希望明年可以去百度IDG或者达摩院或者腾讯 AI lab 去实习。  一、统计机器学习基础1、监督学习 输入空间：输入所有可能的取值的集合。 输出空间：输出所有可能的取值的集合。 每个具体的输入是一个实例，通常由特征向量表示，这时，所有特征向量存在的空间称为特征空间。（特征空间有时和输入空间相同，有时则不同，不">
-<meta property="og:updated_time" content="2017-12-17T17:08:58.362Z">
+<meta property="og:updated_time" content="2017-12-17T17:13:35.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017总结(2)">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;吐槽完了，现在把今年学过的东西复习一下，顺便立一个小小的目标——希望明年可以去百度IDG或者达摩院或者腾讯 AI lab 去实习。  一、统计机器学习基础1、监督学习 输入空间：输入所有可能的取值的集合。 输出空间：输出所有可能的取值的集合。 每个具体的输入是一个实例，通常由特征向量表示，这时，所有特征向量存在的空间称为特征空间。（特征空间有时和输入空间相同，有时则不同，不">
@@ -181,6 +181,7 @@
 <li>联合概率分布：监督学习假设输入与输出随机变量X和Y服从<code>联合概率分布P(X,Y)</code>，X和Y具有联合概率分布的假设就是监督学习关于数据的基本假设。</li>
 <li><code>假设空间</code>：监督学习的目的在于学习一个由输入到输出的映射，这个映射由<code>模型</code>表示。模型属于由输入空间到输出空间的映射的集合，这个集合就是假设空间。假设空间的确定即意味着学习范围的确定。监督学习的模型可以是<code>概率模型</code>或<code>判别模型</code>，由条件概率分布P(Y|X)或者决策函数Y=f(X)决定。</li>
 <li><p>在监督学习中，假设训练数据与测试数据是依联合概率分布P(X,Y)独立同分布的。</p>
+<a id="more"></a>
 <h2 id="2、统计学习三要素"><a href="#2、统计学习三要素" class="headerlink" title="2、统计学习三要素"></a>2、统计学习三要素</h2><p>方法 = 模型+策略+算法</p>
 <h3 id="1）模型"><a href="#1）模型" class="headerlink" title="1）模型"></a>1）模型</h3><p>&emsp;&emsp;在监督学习中，模型即为所要学习的条件概率分布式或决策函数，模型的假设空间包含所有可能的条件概率分布或决策函数。<br>&emsp;&emsp;针对判别模型，可以得到其假设空间为$${\cal F}=\lbrace f|Y=f(X)\rbrace$$&emsp;&emsp;其中X和Y是定义在输入空间和输出空间上的变量，这时集合通常是由一个参数向量构成的函数族\({\cal F}=\lbrace f|Y=f_\theta(X),\theta \in R^n\rbrace\)<br>&emsp;&emsp;参数向量属于参数空间。</p>
 <p>&emsp;&emsp;假设空间也可以定义为条件概率的集合$${\cal F}=\lbrace P|P(Y|X)\rbrace$$&emsp;&emsp;这时\({\cal F}\)通常是由一个参数向量决定的条件概率分布族\({\cal F}=\lbrace P|P_\theta(Y|X),\theta \in R^n\rbrace\)</p>
@@ -436,7 +437,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">复习 - 统计机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color2">统计机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,14 +494,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Attention</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">总结 - 统计机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">统计机器学习</a>
               </li>
             
             <div class="clearfix"></div>
