@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/17/2017总结-2/index.html">
 <meta property="og:site_name" content="Yoran | azure">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;吐槽完了，现在把今年学过的东西复习一下，顺便立一个小小的目标——希望明年可以去百度IDG或者达摩院或者腾讯 AI lab 去实习。  一、统计机器学习基础1、监督学习 输入空间：输入所有可能的取值的集合。 输出空间：输出所有可能的取值的集合。 每个具体的输入是一个实例，通常由特征向量表示，这时，所有特征向量存在的空间称为特征空间。（特征空间有时和输入空间相同，有时则不同，不">
-<meta property="og:updated_time" content="2017-12-17T17:13:35.848Z">
+<meta property="og:updated_time" content="2017-12-18T12:24:34.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017总结(2)">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;吐槽完了，现在把今年学过的东西复习一下，顺便立一个小小的目标——希望明年可以去百度IDG或者达摩院或者腾讯 AI lab 去实习。  一、统计机器学习基础1、监督学习 输入空间：输入所有可能的取值的集合。 输出空间：输出所有可能的取值的集合。 每个具体的输入是一个实例，通常由特征向量表示，这时，所有特征向量存在的空间称为特征空间。（特征空间有时和输入空间相同，有时则不同，不">
@@ -194,11 +194,66 @@
 <p>$${\cal R_{emp}} = {1 \over N} \sum_i^N L(y_i,f(x_i))$$<br>&emsp;&emsp;经验风险最小化的策略认为，经验风险最小的模型即为最优模型。根据这一<code>策略</code>，按经验风险最小化求最优模型即为求解最优化问题。</p>
 <p>ii)结构风险最小化是为了防止过拟合而提出的策略，它是在经验风险之后再加上正则化项，它的定义为：<br>$${\cal R_{emp}} = {1 \over N} \sum_i^N L(y_i,f(x_i)) + \lambda J(f)$$<br>&emsp;&emsp;其中\(\lambda J(f)\)是模型复杂度。<br>&emsp;&emsp;结构风险最小的策略认为，结构风险最小的模型即为最优模型。根据这一<code>策略</code>，按结构风险最小化求最优模型即为求解最优化问题。</p>
 <h3 id="3）算法"><a href="#3）算法" class="headerlink" title="3）算法"></a>3）算法</h3><p>&emsp;&emsp;学习模型的具体算法。统计机器学习基于训练数据集，根据学习策略，从假设空间中选取最优模型，算法即考虑用什么样的方法求解最优模型。</p>
-<h2 id="正则化与交叉验证"><a href="#正则化与交叉验证" class="headerlink" title="正则化与交叉验证"></a>正则化与交叉验证</h2><h3 id="1）正则化"><a href="#1）正则化" class="headerlink" title="1）正则化"></a>1）正则化</h3><p>&emsp;&emsp;正则化是结构经验风险最小化的实现，是在经验风险上加一个正则化项，正则化项一般是模型复杂度的单调递增函数。正则化项可以是参数向量的L1范数，也可以是参数向量的L2范数。</p>
+<h2 id="3、正则化与交叉验证"><a href="#3、正则化与交叉验证" class="headerlink" title="3、正则化与交叉验证"></a>3、正则化与交叉验证</h2><h3 id="1）正则化"><a href="#1）正则化" class="headerlink" title="1）正则化"></a>1）正则化</h3><p>&emsp;&emsp;正则化是结构经验风险最小化的实现，是在经验风险上加一个正则化项，正则化项一般是模型复杂度的单调递增函数。正则化项可以是参数向量的L1范数，也可以是参数向量的L2范数。</p>
 <h3 id="2）交叉验证"><a href="#2）交叉验证" class="headerlink" title="2）交叉验证"></a>2）交叉验证</h3><p>&emsp;&emsp;当数据集较大时，训练集用于训练模型，验证集用于模型选择，测试集用于对学习方法的评估。但由于许多实际应用中数据是不充分的，为了选择好的模型，可以采用交叉验证的方法。交叉验证的基本思想是重复的使用数据。<br>&emsp;&emsp;i)简单交叉验证：先随机将已给数据分为两部分，一部分作为训练集，另一部分作为测试集，然后用训练集在各种条件下（如不同参数个数）训练模型，从而得到不同模型，在测试机上评估各个模型的测试误差，选出最佳的模型。<br>&emsp;&emsp;ii)S折交叉验证：先随机地将数据分为S个互不相交地大小相同地子集，然后用S-1个子集地数据用于训练，利用余下的子集作为测试集；将此过程对可能的S种选择重复进行，最后选出S次测评中平均测试误差最小的模型。</p>
-<h2 id="生成模型与判别模型"><a href="#生成模型与判别模型" class="headerlink" title="生成模型与判别模型"></a>生成模型与判别模型</h2><p>&emsp;&emsp;监督学习可以分为生成方法和判别方法。<br>&emsp;&emsp;1）生成方法由数据学习联合概率分布P(X,Y)，然后求出条件概率分布P(Y|X)作为预测的模型，即生成模型：<br>$$P(Y|X) = {P(X,Y) \over P(x)}$$<br>&emsp;&emsp;2)判别法由数据直接学习决策函数f(x)或条件概率分布P(Y|X)作为预测模型，即判别模型。</p>
+<h2 id="4、生成模型与判别模型"><a href="#4、生成模型与判别模型" class="headerlink" title="4、生成模型与判别模型"></a>4、生成模型与判别模型</h2><p>&emsp;&emsp;监督学习可以分为生成方法和判别方法。<br>&emsp;&emsp;1）生成方法由数据学习联合概率分布P(X,Y)，然后求出条件概率分布P(Y|X)作为预测的模型，即生成模型：<br>$$P(Y|X) = {P(X,Y) \over P(x)}$$<br>&emsp;&emsp;2)判别法由数据直接学习决策函数f(x)或条件概率分布P(Y|X)作为预测模型，即判别模型。</p>
 </li>
 </ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><h1 id="二、感知机"><a href="#二、感知机" class="headerlink" title="二、感知机"></a>二、感知机</h1><p>  &emsp;&emsp;感知机是一种二分类的<code>线性</code>分类模型，属于<code>判别模型</code>。它旨在求出将训练数据进行线性划分的分离超平面。</p>
+<h2 id="1、感知机模型"><a href="#1、感知机模型" class="headerlink" title="1、感知机模型"></a>1、感知机模型</h2><ul>
+<li>输入空间（特征空间）：\(R^n\)</li>
+<li><p>输出空间：\({\cal y} \in \lbrace +1,-1 \rbrace\)<br>&emsp;&emsp;由输入空间到输出空间的如下函数称为感知机$$f(x)=sign(w·x+b)$$<br>其几何解释为：线性方程w·x+b=0对应于特征空间\(R^n\)中的一个超平面S，其中w是超平面的法向量。超平面将特征空间分为两部分。位于两部分的点被分为正负两类。</p>
+<h2 id="2、感知机策略"><a href="#2、感知机策略" class="headerlink" title="2、感知机策略"></a>2、感知机策略</h2><p>&emsp;&emsp;定义（经验）损失函数并将损失函数最小化<br>&emsp;&emsp;现定义损失函数为误分类点到超平面S的总距离：$$L(w,b)=- \sum_{x_i \in M} y_i(w·x_i+b)$$&emsp;&emsp;其中M为误分类点集合</p>
+<h2 id="3、感知机学习算法："><a href="#3、感知机学习算法：" class="headerlink" title="3、感知机学习算法："></a>3、感知机学习算法：</h2><p>&emsp;&emsp;<b>1）采用SGD。首先，任意选取一个超平面\(w_0\),\(b_0\)。然后用随机梯度下降不断地极小化目标函数。极小化过程中不是一次使用M中所有误分类点的梯度下降，而是一次随机选取一个误分类点使其梯度下降。</b></p>
+<p>  输入：训练数据集\(T=\lbrace(x_1,y_1),…,(x_N,y_N)\rbrace\),其中\(x_i \in R^n\)，\(y_i \in \lbrace-1,+1\rbrace\)，学习率为\(\eta\)<br>  输出：w，b，感知机模型机\(f(x)=sign(w·x+b)\)。<br>  （1）任意选取初值\(w_0\),\(b_0\)<br>  （2）在训练数据集T中选取数据\((x_i,y_i)\)<br>  （3）若\(y_i(w·x+b)&lt;=0\),即错误分类<br>   &emsp;&emsp;&emsp;&emsp;w &lt;- w + \(\eta y_i x_i\)<br>   &emsp;&emsp;&emsp;&emsp;b &lt;- b + \(\eta y_i\)<br>  （4）转至（2），直至T中没有错误分类点。</p>
+<p>&emsp;&emsp;若T是线性可分的，则上述感知机算法收敛，即经过有限次迭代可以得到一个将训练数据集合完全正确划分的超平面。</p>
+<p>&emsp;&emsp;<b>2）感知机算法对偶形式：将w和b表示为实例\(x_i\)和标记\(y_i\)的线性组合形式，通过求解其系数得到w和b。</b></p>
+<p>  输入：线性可分的训练数据集\(T=\lbrace(x_1,y_1),…,(x_N,y_N)\rbrace\),其中\(x_i \in R^n\)，\(y_i \in \lbrace-1,+1\rbrace\)，学习率为\(\eta\)</p>
+<p>  输出：\(\alpha\)，b，感知机模型机\(f(x)=sign({\sum}_j^N {\alpha}_j y_i x_j · x + b)\)。其中\(\alpha = ({\alpha}_1,{\alpha}_2,…,{\alpha}_N)^T\)</p>
+<p>  （1）\(w_0\)&lt;-0,\(b_0\)&lt;-0<br>  （2）在训练数据集T中选取数据\((x_i,y_i)\)<br>  （3）若\(y_i({\sum}_j^N {\alpha}_j y_i x_j · x + b)&lt;=0\),即错误分类<br>  &emsp;&emsp;&emsp;&emsp;\({\alpha}_i &lt;- {\alpha}_i + \eta\)<br>  &emsp;&emsp;&emsp;&emsp;b &lt;- b + \(\eta y_i\)<br>  （4）转至（2），直至T中没有错误分类点。</p>
+</li>
+</ul>
+</li>
+<li><h1 id="三、KNN"><a href="#三、KNN" class="headerlink" title="三、KNN"></a>三、KNN</h1><h2 id="1、KNN算法"><a href="#1、KNN算法" class="headerlink" title="1、KNN算法"></a>1、KNN算法</h2><p>  &emsp;&emsp;输入为实例的特征向量，对应于特征空间中的点；输出为实例中的类别，可以取多类。KNN实际上利用训练数据集对特征向量空间进行划分，并作为其分类模型。<code>K值选择</code>、<code>距离度量</code>和<code>分类决策规则</code>是KNN三个基本要素。</p>
+<p>  &emsp;&emsp;KNN算法简单、直观：给定一个训练数据集T，对于新的输入实例，在T中找到与该实例最邻近的k个实例，这k个实例的多数属于某个点就把输入实例分为该类。</p>
+<h2 id="2、KNN模型"><a href="#2、KNN模型" class="headerlink" title="2、KNN模型"></a>2、KNN模型</h2><p>  &emsp;&emsp;KNN模型实际上对应于特征空间的划分。模型由三个基本要素——距离度量、k值以及分类决策规定。</p>
+<h2 id="3、KNN的实现：kd树"><a href="#3、KNN的实现：kd树" class="headerlink" title="3、KNN的实现：kd树"></a>3、KNN的实现：kd树</h2><p>  &emsp;&emsp;实现KNN算法时，主要考虑的是如何对T进行快速k近邻的搜索，为了提高k近邻搜索的效率，可以考虑使用特殊的结构存储T，以减少计算距离的次数。</p>
+</li>
+<li><h1 id="四、朴素贝叶斯"><a href="#四、朴素贝叶斯" class="headerlink" title="四、朴素贝叶斯"></a>四、朴素贝叶斯</h1><p>  &emsp;&emsp;朴素贝叶斯算法是基于朴素贝叶斯定理与特征条件独立假设的分类方法。对于给定的训练数据集T，首先基于特征条件独立的假设学习输入、输出的联合概率分布，然后基于此模型，对于新给定的输入x，利用贝叶斯定理求出后验概率最大的输出y。</p>
+<h2 id="1、朴素贝叶斯的学习与分类"><a href="#1、朴素贝叶斯的学习与分类" class="headerlink" title="1、朴素贝叶斯的学习与分类"></a>1、朴素贝叶斯的学习与分类</h2><ul>
+<li>输入空间：\(R^n\)</li>
+<li><p>输出空间：\(y=\lbrace c_1,c_2,…,c_K\rbrace\)</p>
+<p>&emsp;&emsp;X和Y是定义在输入空间和输出空间上的随机向量\变量。P(X,Y)是X和Y的联合概率分布。现在假设训练数据集\(T=\lbrace(x_1,y_1),…,(x_N,y_N)\rbrace\)由P(X,Y)独立同分布产生。朴素贝叶斯算法则通过训练数据集学习联合概率分布P(X,Y)。</p>
+<p>&emsp;&emsp;具体地，学习以下先验概率分布以及条件概率分布</p>
+<p>$$P(Y=c_K),k=1,2,…,K$$<br>$$P(X=x|Y=c_K)=P(X^{(1)}=x^{(1)},X^{(2)}=x^{(2)},…,X^{(n)}=x^{(n)}|Y=c_K)$$<br>&emsp;&emsp;由条件独立地假设，可得</p>
+<p>$$P(X=x|Y=c_K) = {\prod}^n P(X^{(j)}=x^{(j)}|Y=c_K)$$<br>&emsp;&emsp;朴素贝叶斯实际上学习到的是生成数据地机制，所以属于生成模型。在进行分类时，对于给定的x，通过学习到的模型计算后验概率分布\(P(Y=c_K|X=x)\)</p>
+<p>$$P(Y=c_K|X=x) = {P(X=x|Y=c_K)P(Y=c_K) \over {\sum}_kP(X=x|Y=c_K)P(Y=c_K)}$$<br>&emsp;&emsp;上式中，分子即为P(X,Y)。故朴素贝叶斯的分类结果即为后验概率最大的对应的那一类。</p>
+<h2 id="2、朴素贝叶斯的参数估计"><a href="#2、朴素贝叶斯的参数估计" class="headerlink" title="2、朴素贝叶斯的参数估计"></a>2、朴素贝叶斯的参数估计</h2><p>&emsp;&emsp;1)极大似然估计</p>
+<p>&emsp;&emsp;在朴素贝叶斯算法中，学习意味着估计\(P(Y=c_K)\)和\(P(X^{(j)}=x^{(j)}|Y=c_K)\),可以用MLE算法估计相应的概率。</p>
+<p>$$P(Y=c_K) = {\sum_i^NI(y_i=c_K) \over N},k=1,2,..,K$$</p>
+<p>&emsp;&emsp;设第j个特征\(x^{(j)}\)可能取值的集合为\(a_1,a_2,…\)</p>
+<p>&emsp;&emsp;条件概率\(P(X^{(j)}=a_{l}|Y=c_K)\)的MLE是：</p>
+<p>$$P(X^{(j)}=a_{l}|Y=c_K) = {\sum_i^NI(x_i^j=a_l,y_i=c_K) \over \sum_i^NI(y_i=c_K)}$$<br>$$j=1,2,…,n l=1,2,…,S_j, k=1,2,..,K$$</p>
+<p>&emsp;&emsp;2)贝叶斯估计</p>
+<p>&emsp;&emsp;用MLE可能会出现所要估计的概率值为0的情况，解决这一问题的方法是采用贝叶斯估计，具体的，条件概率的贝叶斯估计是：</p>
+<p>$$P(X^{(j)}=a_{l}|Y=c_K) = {\sum_i^NI(x_i^j=a_l,y_i=c_K)+\lambda \over \sum_i^NI(y_i=c_K)+S_j\lambda}$$</p>
+<p>$$j=1,2,…,n l=1,2,…,S_j, k=1,2,..,K$$</p>
+<p>&emsp;&emsp;先验概率的贝叶斯估计是：</p>
+<p>$$P_\lambda(Y=c_K) = {\sum_i^NI(y_i=c_K)+\lambda \over N+K\lambda},k=1,2,..,K$$</p>
+</li>
+</ul>
+</li>
+<li><h1 id="五、决策树"><a href="#五、决策树" class="headerlink" title="五、决策树"></a>五、决策树</h1><p>  &emsp;&emsp;决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。</p>
+<h2 id="1、决策树模型与学习"><a href="#1、决策树模型与学习" class="headerlink" title="1、决策树模型与学习"></a>1、决策树模型与学习</h2><p>  &emsp;&emsp;定义：决策树由结点和有向边组成。结点有两种类型：内部结点和叶结点。内部结点表示一个特征或者属性，叶结点表示一个类。</p>
+<p>  &emsp;&emsp;用决策树分类，从根结点开始，对实例的某一特征进行测试，根据测试结果，将实例分配到其子结点；这时，每个子结点对应着该特征的一个取值。如此递归地对实例进行测试并分配，直至到达叶结点。</p>
+<p>  &emsp;&emsp;决策树还表示给定特征条件下类的概率分布。这一条件概率分布定义在特征空间的一个划分。将特征空间划分为互不相交的单元，并在每个单元定义一个类的概率分布就构成了一个条件概率分布。决策树的一条路径就对应于划分中的一个单元。决策树所表示的条件概率分布由各个单元给定条件下类的条件概率分布组成。</p>
+<p>  &emsp;&emsp;在决策树学习时，假设给定训练数据集\(D=\lbrace(x_1,y_1),…,(x_N,y_N)\rbrace\),其中，\(x_i=(x_i^{(1)},x_i^{2)},…,x_i^{(n)})^T\)为输入实例（特征向量），n为特征个数，\(y_i \in \lbrace1,2,…,K\rbrace\)为类标记，i=1,2,…,N,N为样本容量。学习的目标是根据给定的训练数据集构建一个决策树模型，使得它能对实例进行正确的分类。从另一个角度看，决策树学习是由训练数据集估计条件概率模型（详见李航书73页）。基于特征空间划分的类的条件概率模型有无穷多个。我们选择的条件概率模型不仅对训练数据有很好的拟合，且对未知数据也要有很好的预测。</p>
+<p>  &emsp;&emsp;决策树学习的算法通常是一个递归地选择最优特征，并根据该特征对训练数据进行分割，使得对各个子数据集有一个最好的分类地过程。</p>
+<p>  &emsp;&emsp;决策树算法包括特征选择，决策树生成以及剪枝过程。由于决策树表示为一个条件概率分布，所以深浅不同地决策树对应着不同复杂度地概率模型。</p>
 </li>
 </ul>
 
@@ -437,10 +492,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">统计机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
               </li>
              
@@ -449,15 +500,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">统计机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LINUX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,11 +524,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">HTTP协议</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+                <a href="javascript:void(0)" class="js-tag color2">HTTP协议</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,6 +537,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NER</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
               </li>
              
               <li class="article-tag-list-item">
