@@ -15,10 +15,14 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/17/2017总结-2/index.html">
 <meta property="og:site_name" content="Yoran | azure">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;吐槽完了，现在把今年学过的东西复习一下，顺便立一个小小的目标——希望明年可以去百度IDG或者达摩院或者腾讯 AI lab 去实习。  一、统计机器学习基础1、监督学习 输入空间：输入所有可能的取值的集合。 输出空间：输出所有可能的取值的集合。 每个具体的输入是一个实例，通常由特征向量表示，这时，所有特征向量存在的空间称为特征空间。（特征空间有时和输入空间相同，有时则不同，不">
-<meta property="og:updated_time" content="2017-12-18T12:24:34.194Z">
+<meta property="og:image" content="http://yoursite.com/images/formula.png">
+<meta property="og:image" content="http://yoursite.com/images/ab.png">
+<meta property="og:image" content="http://yoursite.com/images/xiaoyu.png">
+<meta property="og:updated_time" content="2017-12-20T10:37:09.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017总结(2)">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;吐槽完了，现在把今年学过的东西复习一下，顺便立一个小小的目标——希望明年可以去百度IDG或者达摩院或者腾讯 AI lab 去实习。  一、统计机器学习基础1、监督学习 输入空间：输入所有可能的取值的集合。 输出空间：输出所有可能的取值的集合。 每个具体的输入是一个实例，通常由特征向量表示，这时，所有特征向量存在的空间称为特征空间。（特征空间有时和输入空间相同，有时则不同，不">
+<meta name="twitter:image" content="http://yoursite.com/images/formula.png">
   
     <link rel="alternative" href="/atom.xml" title="Yoran | azure" type="application/atom+xml">
   
@@ -254,6 +258,30 @@
 <p>  &emsp;&emsp;在决策树学习时，假设给定训练数据集\(D=\lbrace(x_1,y_1),…,(x_N,y_N)\rbrace\),其中，\(x_i=(x_i^{(1)},x_i^{2)},…,x_i^{(n)})^T\)为输入实例（特征向量），n为特征个数，\(y_i \in \lbrace1,2,…,K\rbrace\)为类标记，i=1,2,…,N,N为样本容量。学习的目标是根据给定的训练数据集构建一个决策树模型，使得它能对实例进行正确的分类。从另一个角度看，决策树学习是由训练数据集估计条件概率模型（详见李航书73页）。基于特征空间划分的类的条件概率模型有无穷多个。我们选择的条件概率模型不仅对训练数据有很好的拟合，且对未知数据也要有很好的预测。</p>
 <p>  &emsp;&emsp;决策树学习的算法通常是一个递归地选择最优特征，并根据该特征对训练数据进行分割，使得对各个子数据集有一个最好的分类地过程。</p>
 <p>  &emsp;&emsp;决策树算法包括特征选择，决策树生成以及剪枝过程。由于决策树表示为一个条件概率分布，所以深浅不同地决策树对应着不同复杂度地概率模型。</p>
+<h2 id="2、特征选择"><a href="#2、特征选择" class="headerlink" title="2、特征选择"></a>2、特征选择</h2><p>  &emsp;&emsp;特征选择在于选取对训练数据具有分类能力的特征。通常特征选择的准则是信息增益或信息增益比。</p>
+<ul>
+<li><p>随机变量X的熵定义为：</p>
+<p>$$H(X)=-\sum_i^np_ilog(p_i)$$<br>&emsp;&emsp;随机变量X给定条件下随机变量Y的条件熵H(Y|X)，定义为给定条件X下Y的条件概率分布的熵对X的数学期望：</p>
+<p>$$H(Y|X)=\sum_i^np_iH(Y|X=x_i)$$<br>$$p_i = P(X=x_i)$$</p>
+</li>
+<li><p>信息增益：特征A对训练数据集D的信息增益g(D,A),定义为集合D的经验熵H(D)与特征A给定条件下D的经验条件熵\(H(D|A)\)之差，即g(D,A) = H(D)-H(D|A)。</p>
+<p>&emsp;&emsp;决策树学习应用信息增益准则选择特征。给定训练数据集D和特征A，经验熵H(D)表示对数据集D进行分类的不确定性。而经验熵H(D|A)表示在给定特征A的条件下对数据集D进行分类的不确定性。它们的差即信息增益，就表示由于特征A而使得数据集D的分类的不确定性减少的程度。根据信息增益的选择特征的方法是：对训练数据集（或子集）D，计算其每个特征的信息增益，并比较它们的大小，选择信息增益大的特征。</p>
+<h2 id="3、决策树的生成"><a href="#3、决策树的生成" class="headerlink" title="3、决策树的生成"></a>3、决策树的生成</h2><p>&emsp;&emsp;1）ID3算法：</p>
+<p>&emsp;&emsp;在决策树各个结点上应用信息增益准则选择特征，递归地构建决策树。具体方法是：从根结点开始，对结点计算所有可能的特征的信息增益，选择信息增益最大的特征作为结点的特征，由该特征的不同取值建立子结点；再对子结点递归地调用以上算法，构建决策树，直到所有特征的信息增益均很小或没有特征可以选择为止。</p>
+<p>&emsp;&emsp;2）C4.5算法：</p>
+<p>&emsp;&emsp;和ID3类似，只是在生成过程中，用信息增益比来选择特征。</p>
+<h2 id="4、决策树的剪枝"><a href="#4、决策树的剪枝" class="headerlink" title="4、决策树的剪枝"></a>4、决策树的剪枝</h2><p>&emsp;&emsp;在决策树学习中将以生成的树进行简化的过程称为剪枝。具体的、剪枝从已生成的树上裁掉一些子树或叶结点，并将其根结点或父节点作为新的叶结点。设树T的叶结点个数为|T|，其中k类的样本点由\(N_{tk}，k=1,2,…,K\)个,\(H_t(T)\)为t上的经验熵，\(\alpha &gt;= 0\)为参数，则决策树学习的损失函数可以定义为：</p>
+<p>$$C\alpha(T)=\sum_t^{|T|}N_tH_t(T)+\alpha|T|$$</p>
+<p>&emsp;&emsp;其中经验熵为<br><div align="center"><img src="/images/formula.png" alt="“”"></div><br>&emsp;&emsp;在损失函数中，将有段第一项记作C(T)，表示模型对训练数据的预测误差，而|T|表示模型复杂度。算是函数正好表示了C(T)与|T|的平衡。</p>
+<p>&emsp;&emsp; <strong>剪枝算法</strong></p>
+<p>&emsp;&emsp;输入：生成算法产生的整个树T，参数\(\alpha\)</p>
+<p>&emsp;&emsp;输出：修剪后的子树\(T_\alpha\)</p>
+<p>&emsp;&emsp;（1）计算每个结点的经验熵</p>
+<p>&emsp;&emsp;（2）递归地从树的叶结点向上回缩，设一组叶结点回缩到其父结点之前与之后的整体树分别为\(T_B,T_A\),其对应的损失函数分别为<br><div align="center"><img src="/images/ab.png" alt="“”"></div><br>&emsp;&emsp;若<br><div align="center"><img src="/images/xiaoyu.png" alt="“”"></div><br>&emsp;&emsp;则进行剪枝。</p>
+<p>&emsp;&emsp;（3）返回（2），直到不能继续为止，得到损失函数最小的子树。</p>
+<h2 id="5、CART算法（分类与回归树）"><a href="#5、CART算法（分类与回归树）" class="headerlink" title="5、CART算法（分类与回归树）"></a>5、CART算法（分类与回归树）</h2><p>&emsp;&emsp;CART是在给定输入随机变量X条件下输出随机变量Y的条件概率分布的学习方法。CART假设决策树是二叉树，内部节点特征的取值是“是”或“否”，左分支是取值为“是”的分支、右分支是取值为“否”的分支。</p>
+</li>
+</ul>
 </li>
 </ul>
 
@@ -484,19 +512,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RNN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,6 +540,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
@@ -524,11 +556,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color2">HTTP协议</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">HTTP协议</a>
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,10 +569,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NER</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
               </li>
              
               <li class="article-tag-list-item">
