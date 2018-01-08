@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/images/formula.png">
 <meta property="og:image" content="http://yoursite.com/images/ab.png">
 <meta property="og:image" content="http://yoursite.com/images/xiaoyu.png">
-<meta property="og:updated_time" content="2017-12-20T10:37:09.975Z">
+<meta property="og:updated_time" content="2018-01-08T08:18:20.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017总结(2)">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;吐槽完了，现在把今年学过的东西复习一下，顺便立一个小小的目标——希望明年可以去百度IDG或者达摩院或者腾讯 AI lab 去实习。  一、统计机器学习基础1、监督学习 输入空间：输入所有可能的取值的集合。 输出空间：输出所有可能的取值的集合。 每个具体的输入是一个实例，通常由特征向量表示，这时，所有特征向量存在的空间称为特征空间。（特征空间有时和输入空间相同，有时则不同，不">
@@ -283,6 +283,17 @@
 </li>
 </ul>
 </li>
+<li><h1 id="六、Logistic回归和最大熵模型-MEM"><a href="#六、Logistic回归和最大熵模型-MEM" class="headerlink" title="六、Logistic回归和最大熵模型(MEM)"></a>六、Logistic回归和最大熵模型(MEM)</h1><h2 id="1、Logistic回归"><a href="#1、Logistic回归" class="headerlink" title="1、Logistic回归"></a>1、Logistic回归</h2><p>  1）LR模型</p>
+<p>  $$P(Y=1|X)={exp(w·x+b) \over {1+exp(w·x+b)}}$$<br>  $$P(Y=0|X)={1 \over {1+exp(w·x+b)}}$$</p>
+<p>  一个事件的几率指该事件发生的概率与该事件不发生的概率的比值。若某事件发生的概率为p，则该事件的几率是\(p \over {1-p}\)，其对数几率是\(logit(p) = log({p \over {1-p}})\)。对于逻辑回归而言，输出Y=1的对数几率是输入x的线性函数。或者说，输出Y=1的对数几率是由输入X的线性函数表示的模型。即Logistic Regression模型。</p>
+<p>  LR模型学习时，对于给定的训练数据集\(T={(x_1,y_1),(x_2,y_2),…}\)，其中\(x_i \in R^n,y_i \in {1,-1}\),可以用极大似然估计模型参数，从而得到LR模型。</p>
+<p>  2）多项LR：<br>  假设离散型随机变量Y的取值集合是{1,2,…,K}，那么多项Logistic回归的模型是：<br>  $$P(Y=k|X)={exp(w_k·x+b) \over {1+\sum_kexp(w_k·x+b)}}$$<br>  $$P(Y=K|X)={1 \over {1+\sum_kexp(w_k·x+b)}}$$<br>  这里\(x \in R^{n+1},w_k \in R^{n+1}\)</p>
+<h2 id="2、最大熵模型"><a href="#2、最大熵模型" class="headerlink" title="2、最大熵模型"></a>2、最大熵模型</h2><p>  1）最大熵模型的原理：学习概率模型时，在所有可能的概率模型分布中，选择熵最大的模型作为最好的模型。通常用约束条件来确定概率模型的集合。所以，最大熵原理也可以表述为在满足约束条件的模型集合中选择熵最大的模型。<br>  2）最大熵模型定义：假设分类模型是一个条件概率分布\(P(Y|X)，X \in R^n,Y \in R\)。现在给定一个训练集\(T=\lbrace(x_1,y_1),…,(x_N,y_N)\rbrace\),学习的目标是用最大熵原理来选择最好的分类模型。</p>
+<p>  首先考虑模型应该满足的条件。可以根据数据集T来确定P(X,Y)的经验分布和P(X)的经验分布。<br>  $$P^\sim(X=x,Y=y)={V(X=x,Y=y) \over N}$$<br>  $$P^\sim(X=x)={V(X=x) \over N}$$<br>  用特征函数f(x,y)描述输入x和输入y之间的某一个事实，其定义是：如果x和y满足某个事实，则f(x,y)为1，否则为0.<br>  f(x,y)关于经验分布\(P^\sim(X,Y)\)的期望值，用\(Ep^\sim(f)=\sum_{x,y}P^\sim(x,y)f(x,y)\)表示。</p>
+<p>  f(x,y)关于模型P(Y|X)与经验分布\(P^\sim(X)\)的期望值，用\(Ep(f)=\sum_{x,y}P^\sim(x)P(y|x)f(x,y)\)表示。</p>
+<p>  如果模型可以获取数据集中的信息，则这两个期望相等，即\(Ep(f)=Ep^\sim(f)\)。此即为约束条件。假设由n个特征函数\(f_i(x,y),i=1,2,…,n\)，既有n个约束条件。</p>
+<p>  定义：假设满足所有约束条件的模型集合为</p>
+</li>
 </ul>
 
       
@@ -434,7 +445,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 Yoran
+    		&copy; 2018 Yoran
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -512,18 +523,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">总结</a>
               </li>
              
@@ -532,11 +531,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LINUX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RNN</a>
               </li>
              
               <li class="article-tag-list-item">
