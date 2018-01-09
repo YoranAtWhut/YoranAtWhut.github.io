@@ -18,7 +18,9 @@
 <meta property="og:image" content="http://yoursite.com/images/formula.png">
 <meta property="og:image" content="http://yoursite.com/images/ab.png">
 <meta property="og:image" content="http://yoursite.com/images/xiaoyu.png">
-<meta property="og:updated_time" content="2018-01-08T08:18:20.391Z">
+<meta property="og:image" content="http://yoursite.com/images/MEM.png">
+<meta property="og:image" content="http://yoursite.com/images/mem1.png">
+<meta property="og:updated_time" content="2018-01-09T10:39:15.633Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017总结(2)">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;吐槽完了，现在把今年学过的东西复习一下，顺便立一个小小的目标——希望明年可以去百度IDG或者达摩院或者腾讯 AI lab 去实习。  一、统计机器学习基础1、监督学习 输入空间：输入所有可能的取值的集合。 输出空间：输出所有可能的取值的集合。 每个具体的输入是一个实例，通常由特征向量表示，这时，所有特征向量存在的空间称为特征空间。（特征空间有时和输入空间相同，有时则不同，不">
@@ -293,6 +295,15 @@
 <p>  f(x,y)关于模型P(Y|X)与经验分布\(P^\sim(X)\)的期望值，用\(Ep(f)=\sum_{x,y}P^\sim(x)P(y|x)f(x,y)\)表示。</p>
 <p>  如果模型可以获取数据集中的信息，则这两个期望相等，即\(Ep(f)=Ep^\sim(f)\)。此即为约束条件。假设由n个特征函数\(f_i(x,y),i=1,2,…,n\)，既有n个约束条件。</p>
 <p>  定义：假设满足所有约束条件的模型集合为</p>
+<p>  $$C=\lbrace p \in P|Ep(f_i)=Ep^\sim(f_i),i=1,2,…,n\rbrace$$<br>  定义在条件概率分布P(Y|X)上的条件熵为：</p>
+<p>  $$H(P)=-\sum_{x,y}P^\sim(x)P(y|x)logP(y|x)$$<br>  则模型集合C中条件熵H(P)最大的模型成为最大熵模型。</p>
+<h2 id="3、最大熵模型学习"><a href="#3、最大熵模型学习" class="headerlink" title="3、最大熵模型学习"></a>3、最大熵模型学习</h2><p>  最大熵模型学习等价于约束最优化问题。</p>
+<p>  <div align="center"><img src="/images/MEM.png" alt="“”"></div><br>  $$s.t \ \ \ \ \ \  Ep(f_i)=Ep^\sim(f_i),i=1,2,…,n\ \ \ \ \sum_yP(y|x)=1$$<br>  使用Lagrange数乘法，求得</p>
+<p>  $$P_w(y|x) = {1 \over Z_w(x)}exp(\sum_i^nw_if_i(x,y))\ \ \ \ \ \ Z_w(x)=\sum_yexp(\sum_i^nw_if_i(x,y))$$<br>  这里的\(w_i\)就是特征的权值，即为最大熵模型中的参数。</p>
+<p>  <div align="center"><img src="/images/mem1.png" alt="“”"></div><br>  其中，\(L(P,w)=-H(P)+w_0(1-\sum_yP(y|x))+\sum_i^nw_i(Ep^\sim(f_i)-Ep(f_i))\)</p>
+<h2 id="4、极大似然估计"><a href="#4、极大似然估计" class="headerlink" title="4、极大似然估计"></a>4、极大似然估计</h2><p>  极大似然估计就是说最大熵模型学习中的对偶函数最大化等价于最大熵模型的极大似然估计（其实就是说w*的求解过程可以用最大化L(w)来完成）。</p>
+<p>  最大熵模型与逻辑回归模型具有类似的形式，它们又称为对数线性模型。模型学习就是在给定的训练数据条件下对模型进行极大似然估计或正则化的极大似然估计。</p>
+<h2 id="5、模型学习的最优化算法"><a href="#5、模型学习的最优化算法" class="headerlink" title="5、模型学习的最优化算法"></a>5、模型学习的最优化算法</h2><p>  LR、MEM学习归结为以似然函数为目标函数的最优化问题，通常通过迭代算法求解。常用的方法有迭代尺度法、梯度下降法、牛顿法或拟牛顿法。</p>
 </li>
 </ul>
 
@@ -531,7 +542,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,15 +558,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DeepLearning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,6 +575,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">HTTP协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
